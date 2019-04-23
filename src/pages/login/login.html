@@ -1,0 +1,19 @@
+<ion-content padding center text-center>
+  <ion-title>Bareng.in
+    IPB
+  </ion-title>
+  <ion-list>
+    <ion-item>
+      <ion-input placeholder="Email" type="email" [(ngModel)]="email"></ion-input>
+    </ion-item>
+    <ion-item>
+        <ion-input placeholder="Password" type="password" [(ngModel)]="password"></ion-input>
+      </ion-item>
+  </ion-list>
+
+  <button ion-button full (click)="loginAcc()">Log in</button>
+  <button >Forgot Password</button>
+
+  <p>Don't have an account? <button (click)=goRegister()>Sign up.</button></p>
+
+</ion-content>
