@@ -26,9 +26,12 @@ export class ForgetPasswordPage {
   }
 
   register(){
-    if(this.email!=0){
-      alert("An email has been sent for you to reset your password");
+    if(this.email==0){
+      alert("Please fill up your email");
     }
+    else {
+      this.navCtrl.setRoot(HomePage);
+  }
   }
 
 }
