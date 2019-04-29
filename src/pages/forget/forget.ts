@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { HomePage } from '../home/home';
+import { LoginPage } from '../login/login';
 
 /**
- * Generated class for the ForgetPasswordPage page.
+ * Generated class for the ForgetPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
@@ -11,10 +11,10 @@ import { HomePage } from '../home/home';
 
 @IonicPage()
 @Component({
-  selector: 'page-forget-password',
-  templateUrl: 'forget-password.html',
+  selector: 'page-forget',
+  templateUrl: 'forget.html',
 })
-export class ForgetPasswordPage {
+export class ForgetPage {
 
   email: string;
 
@@ -22,16 +22,16 @@ export class ForgetPasswordPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad ForgetPasswordPage');
+    console.log('ionViewDidLoad ForgetPage');
   }
 
-  register(){
-    if(this.email==0){
-      alert("Please fill up your email");
+  forget(){
+    if(this.email.length==0){
+      alert("Please tell us your email");
     }
     else {
-      this.navCtrl.setRoot(HomePage);
-  }
+        this.navCtrl.setRoot(LoginPage);
+    }
   }
 
 }

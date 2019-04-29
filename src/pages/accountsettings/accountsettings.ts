@@ -18,17 +18,9 @@ export class AccountsettingsPage {
   name: string;
   email: string;
   password: string;
-  platnumber: string;
-  address: string;
-  phonenumber: string;
-
-  name: string;
-  email: string;
-  password: string;
-  repassword: string;
   licensePlate: string;
   address: string;
-  PhoneNumber: string;
+  phonee: string;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
