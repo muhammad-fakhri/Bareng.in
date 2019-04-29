@@ -10,7 +10,7 @@ import { GuidemePage } from '../pages/guideme/guideme';
 import { HaltelocationPage } from '../pages/haltelocation/haltelocation';
 import { ParkinghistoryPage } from '../pages/parkinghistory/parkinghistory';
 import { AccountsettingsPage } from '../pages/accountsettings/accountsettings';
-
+import { OpeningPage } from '../pages/opening/opening';
 
 @Component({
   templateUrl: 'app.html'
@@ -18,7 +18,7 @@ import { AccountsettingsPage } from '../pages/accountsettings/accountsettings';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage:any = LoginPage;
+  rootPage:any = OpeningPage;
   
   pages: Array<{title: string, component:any}>;
 

@@ -1,6 +1,5 @@
-<ion-content padding center text-center>
-  <ion-title>Bareng.in
-    IPB
+<ion-content padding center text-center class="login">
+  <ion-title>Bareng.in <br> IPB
   </ion-title>
   <ion-list>
     <ion-item>
@@ -11,11 +10,8 @@
       </ion-item>
   </ion-list>
 
-  
-  <br>
-  <br>
-  <button ion-button full (click)="loginAcc()">Log in</button>
-  <br>
+
+  <button ion-button full (click)="loginAcc()" [ngStyle]=" !isSelected&&{'background-color':'yellow'}">Log in</button>
   <button >Forgot Password</button>
 
   <p>Don't have an account? <button (click)=goRegister()>Sign up.</button></p>

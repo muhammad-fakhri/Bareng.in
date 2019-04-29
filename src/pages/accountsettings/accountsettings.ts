@@ -15,6 +15,12 @@ import { HomePage } from '../home/home';
   templateUrl: 'accountsettings.html',
 })
 export class AccountsettingsPage {
+  name: string;
+  email: string;
+  password: string;
+  platnumber: string;
+  address: string;
+  phonenumber: string;
 
   name: string;
   email: string;
@@ -31,13 +37,11 @@ export class AccountsettingsPage {
     console.log('ionViewDidLoad AccountsettingsPage');
   }
 
-  register(){
-    if(this.name.length==0 || this.email.length==0 || this.password.length==0 || (this.repassword !== this.password)){
+  Home() {
+   
+    if(this.email.length==0 || this.password.length==0){
       alert("Please fill all fields");
     }
-    else {
-        this.navCtrl.setRoot(HomePage);
-    }
+    this.navCtrl.setRoot(HomePage); 
   }
-
 }

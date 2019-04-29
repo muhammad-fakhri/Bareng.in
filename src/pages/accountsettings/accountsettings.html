@@ -1,4 +1,3 @@
-
 <ion-header>
   <ion-navbar>
       <button ion-button menuToggle>
@@ -8,44 +7,28 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  <strong>
-      <p>Let us know more about you!</p>
-  </strong>
-
+<ion-content padding class="accountsetting">
+  <h4>Complete Your Profile</h4>
   <ion-list>
-
-    <ion-avatar>
-      <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y">
-      <ion-label>Profile Picture</ion-label>
-      <ion-input type="file" [id]="pic"></ion-input>
-    </ion-avatar>
-
-
-
     <ion-item>
-      <ion-input placeholder="Name" [(ngModel)]="name"></ion-input>
+        <ion-input placeholder="Name" [(ngModel)]="name"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-input placeholder="Email" [(ngModel)]="email"></ion-input>
+        <ion-input placeholder="Email" type="email" [(ngModel)]="email"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-input placeholder="Password" [(ngModel)]="password" type="password"></ion-input>
+        <ion-input placeholder="Password" type="password" [(ngModel)]="password"></ion-input>
     </ion-item>
     <ion-item>
-        <ion-input placeholder="Repeat Password" [(ngModel)]="repassword" type="password"></ion-input>
+        <ion-input placeholder="Plat Number" [(ngModel)]="platnumber"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-input placeholder="Vehicle License Plate" [(ngModel)]="licensePlate" type="text"></ion-input>
+        <ion-input placeholder="Address" [(ngModel)]="address"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-input placeholder="Address" [(ngModel)]="address" type="text"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-input placeholder="Phone Number" [(ngModel)]="PhoneNumber" type="text"></ion-input>
+        <ion-input placeholder="Phone Number" [(ngModel)]="phone"></ion-input>
     </ion-item>
   </ion-list>
 
-  <br>
-  <br>
-  <button ion-button full (click)="register()">Save</button>
+  <button ion-button (click)=Home()>Save</button>
+</ion-content>

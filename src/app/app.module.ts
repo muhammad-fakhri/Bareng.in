@@ -13,11 +13,12 @@ import { GuidemePage } from '../pages/guideme/guideme';
 import { HaltelocationPage } from '../pages/haltelocation/haltelocation';
 import { ParkinghistoryPage } from '../pages/parkinghistory/parkinghistory';
 import { AccountsettingsPage } from '../pages/accountsettings/accountsettings';
-import { Forget-PasswordPage } from '../pages/forget-password/forget-password';
+import { OpeningPage } from '../pages/opening/opening';
 
 @NgModule({
   declarations: [
     MyApp,
+    OpeningPage,
     LoginPage,
     RegisterPage,
     HomePage,
@@ -35,6 +36,7 @@ import { Forget-PasswordPage } from '../pages/forget-password/forget-password';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
+    OpeningPage,
     LoginPage,
     RegisterPage,
     HomePage,
