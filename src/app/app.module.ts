@@ -13,10 +13,12 @@ import { GuidemePage } from '../pages/guideme/guideme';
 import { HaltelocationPage } from '../pages/haltelocation/haltelocation';
 import { ParkinghistoryPage } from '../pages/parkinghistory/parkinghistory';
 import { AccountsettingsPage } from '../pages/accountsettings/accountsettings';
+import { OpeningPage } from '../pages/opening/opening';
 
 @NgModule({
   declarations: [
     MyApp,
+    OpeningPage,
     LoginPage,
     RegisterPage,
     HomePage,
@@ -33,6 +35,7 @@ import { AccountsettingsPage } from '../pages/accountsettings/accountsettings';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
+    OpeningPage,
     LoginPage,
     RegisterPage,
     HomePage,

@@ -13,6 +13,28 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content padding class="accountsetting">
+  <h4>Complete Your Profile</h4>
+  <ion-list>
+    <ion-item>
+        <ion-input placeholder="Name" [(ngModel)]="name"></ion-input>
+    </ion-item>
+    <ion-item>
+        <ion-input placeholder="Email" type="email" [(ngModel)]="email"></ion-input>
+    </ion-item>
+    <ion-item>
+        <ion-input placeholder="Password" type="password" [(ngModel)]="password"></ion-input>
+    </ion-item>
+    <ion-item>
+        <ion-input placeholder="Plat Number" [(ngModel)]="platnumber"></ion-input>
+    </ion-item>
+    <ion-item>
+        <ion-input placeholder="Address" [(ngModel)]="address"></ion-input>
+    </ion-item>
+    <ion-item>
+        <ion-input placeholder="Phone Number" [(ngModel)]="phone"></ion-input>
+    </ion-item>
+  </ion-list>
 
+  <button ion-button (click)=Home()>Save</button>
 </ion-content>
