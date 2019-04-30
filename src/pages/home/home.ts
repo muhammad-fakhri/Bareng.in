@@ -9,6 +9,7 @@ import { DataSource } from '../../providers/datasource';
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
  */
+declare var google;
 @IonicPage()
 @Component({
   selector: 'page-home',
