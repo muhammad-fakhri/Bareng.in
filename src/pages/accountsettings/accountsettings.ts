@@ -21,6 +21,7 @@ export class AccountsettingsPage {
   licensePlate: string;
   address: string;
   phonee: string;
+  pic: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
@@ -36,4 +37,5 @@ export class AccountsettingsPage {
     }
     this.navCtrl.setRoot(HomePage); 
   }
+
 }
