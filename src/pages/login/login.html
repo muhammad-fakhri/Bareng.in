@@ -10,8 +10,9 @@
       </ion-item>
   </ion-list>
 
+
   <button ion-button full (click)="loginAcc()" [ngStyle]=" !isSelected&&{'background-color':'yellow'}">Log in</button>
-  <button >Forgot Password</button>
+  <button (click)=goForget() >Forgot Password</button>
 
   <p>Don't have an account? <button (click)=goRegister()>Sign up.</button></p>
 

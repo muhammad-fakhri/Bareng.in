@@ -3,7 +3,10 @@ import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
-
+import { Servers } from '../providers/server';
+import { DataSource } from '../providers/datasource';
+import { HttpModule, JsonpModule } from '@angular/http';
+ 
 import { MyApp } from './app.component';
 import { LoginPage } from '../pages/login/login';
 import { RegisterPage } from '../pages/register/register';
@@ -14,7 +17,8 @@ import { HaltelocationPage } from '../pages/haltelocation/haltelocation';
 import { ParkinghistoryPage } from '../pages/parkinghistory/parkinghistory';
 import { AccountsettingsPage } from '../pages/accountsettings/accountsettings';
 import { OpeningPage } from '../pages/opening/opening';
-
+import { ForgetPage } from '../pages/forget/forget';
+ 
 @NgModule({
   declarations: [
     MyApp,
@@ -26,10 +30,13 @@ import { OpeningPage } from '../pages/opening/opening';
     HaltelocationPage,
     ParkinghistoryPage,
     AccountsettingsPage,
-    LogoutPage
+    LogoutPage,
+    ForgetPage
   ],
   imports: [
     BrowserModule,
+    HttpModule,
+    JsonpModule,
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
@@ -43,11 +50,14 @@ import { OpeningPage } from '../pages/opening/opening';
     HaltelocationPage,
     ParkinghistoryPage,
     AccountsettingsPage,
-    LogoutPage
+    LogoutPage,
+    ForgetPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
+    Servers,
+    DataSource,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

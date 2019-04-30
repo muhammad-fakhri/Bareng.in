@@ -3,6 +3,7 @@ import { NavController, IonicPage, NavParams } from 'ionic-angular';
 import { RegisterPage } from '../register/register';
 import { HomePage } from '../home/home';
 import { Events } from 'ionic-angular';
+import { ForgetPage } from '../forget/forget';
 
 @IonicPage()
 @Component({
@@ -35,5 +36,9 @@ export class LoginPage {
 
   goRegister(){
     this.navCtrl.push(RegisterPage);
+  }
+
+  goForget(){
+    this.navCtrl.push(ForgetPage);
   }
 }

@@ -18,9 +18,9 @@ export class AccountsettingsPage {
   name: string;
   email: string;
   password: string;
-  platnumber: string;
+  licensePlate: string;
   address: string;
-  phonenumber: string;
+  phonee: string;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
