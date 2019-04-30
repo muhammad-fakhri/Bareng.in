@@ -2,7 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-
+ 
 import { LoginPage } from '../pages/login/login';
 import { HomePage } from '../pages/home/home';
 import { LogoutPage } from '../pages/logout/logout';
@@ -19,7 +19,7 @@ import { ForgetPage } from '../pages/forget/forget';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage:any = OpeningPage;
+  rootPage:any = LoginPage;
   
   pages: Array<{title: string, component:any}>;
 
@@ -32,7 +32,8 @@ export class MyApp {
         {title: 'Halte Location', component: HaltelocationPage},
         {title: 'Parking History', component: ParkinghistoryPage},
         {title: 'Account Settings', component: AccountsettingsPage},
-        {title: 'Logout', component: LogoutPage}
+        {title: 'Logout', component: LogoutPage},
+        {title: 'Reset Password', component: ForgetPage}
       ];
   }
     

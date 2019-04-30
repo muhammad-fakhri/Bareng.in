@@ -3,7 +3,10 @@ import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
-
+import { Servers } from '../providers/server';
+import { DataSource } from '../providers/datasource';
+import { HttpModule, JsonpModule } from '@angular/http';
+ 
 import { MyApp } from './app.component';
 import { LoginPage } from '../pages/login/login';
 import { RegisterPage } from '../pages/register/register';
@@ -15,7 +18,7 @@ import { ParkinghistoryPage } from '../pages/parkinghistory/parkinghistory';
 import { AccountsettingsPage } from '../pages/accountsettings/accountsettings';
 import { OpeningPage } from '../pages/opening/opening';
 import { ForgetPage } from '../pages/forget/forget';
-
+ 
 @NgModule({
   declarations: [
     MyApp,
@@ -29,9 +32,11 @@ import { ForgetPage } from '../pages/forget/forget';
     AccountsettingsPage,
     LogoutPage,
     ForgetPage
-    ],
+  ],
   imports: [
     BrowserModule,
+    HttpModule,
+    JsonpModule,
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
@@ -51,6 +56,8 @@ import { ForgetPage } from '../pages/forget/forget';
   providers: [
     StatusBar,
     SplashScreen,
+    Servers,
+    DataSource,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
