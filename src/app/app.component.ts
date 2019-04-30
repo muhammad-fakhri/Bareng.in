@@ -11,7 +11,7 @@ import { HaltelocationPage } from '../pages/haltelocation/haltelocation';
 import { ParkinghistoryPage } from '../pages/parkinghistory/parkinghistory';
 import { AccountsettingsPage } from '../pages/accountsettings/accountsettings';
 import { OpeningPage } from '../pages/opening/opening';
-import { ForgetPasswordPage } from '../pages/forget-password/forget-password';
+import { ForgetPage } from '../pages/forget/forget';
 
 
 @Component({
@@ -34,7 +34,7 @@ export class MyApp {
         {title: 'Parking History', component: ParkinghistoryPage},
         {title: 'Account Settings', component: AccountsettingsPage},
         {title: 'Logout', component: LogoutPage},
-        {title: 'Reset Password', component: ForgetPasswordPage}
+        {title: 'Reset Password', component: ForgetPage}
       ];
   }
     

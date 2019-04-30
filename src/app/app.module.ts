@@ -16,9 +16,8 @@ import { GuidemePage } from '../pages/guideme/guideme';
 import { HaltelocationPage } from '../pages/haltelocation/haltelocation';
 import { ParkinghistoryPage } from '../pages/parkinghistory/parkinghistory';
 import { AccountsettingsPage } from '../pages/accountsettings/accountsettings';
-import { forget-passwordPage } from '../pages/forget-password/forget-password';
 import { OpeningPage } from '../pages/opening/opening';
-import { ForgetPasswordPage } from '../pages/forget-password/forget-password';
+import { ForgetPage } from '../pages/forget/forget';
  
 @NgModule({
   declarations: [
@@ -32,7 +31,7 @@ import { ForgetPasswordPage } from '../pages/forget-password/forget-password';
     ParkinghistoryPage,
     AccountsettingsPage,
     LogoutPage,
-    ForgetPasswordPage
+    ForgetPage
   ],
   imports: [
     BrowserModule,
@@ -52,7 +51,7 @@ import { ForgetPasswordPage } from '../pages/forget-password/forget-password';
     ParkinghistoryPage,
     AccountsettingsPage,
     LogoutPage,
-    ForgetPasswordPage
+    ForgetPage
   ],
   providers: [
     StatusBar,
