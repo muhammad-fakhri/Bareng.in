@@ -10,15 +10,13 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding class="Forget">
+<ion-content padding>
   
   <ion-list>
-    <ion-item>
-        <ion-input placeholder="Email" [(ngModel)]="email"></ion-input>
-    </ion-item>
+      <ion-input placeholder="Email" [(ngModel)]="email" type="email"></ion-input>
   </ion-list>
 
-  <button ion-button full (click)="forget()" [ngStyle]=" !isSelected&&{'background-color':'yellow'}">Send Email</button>
+  <button ion-button full (click)="forget()" color="roze" class="forget">Send Email</button>
 
   <p>Enter your email address and we will send you a link to restore your Password</p>
 </ion-content>

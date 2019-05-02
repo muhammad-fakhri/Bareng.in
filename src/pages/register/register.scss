@@ -1,5 +1,45 @@
 page-register {
-    .register {
-        background-color:skyblue;
+    ion-content{
+        background-image: url("../assets/image/background4.jpg");
+        background-size: cover;
+        text-align: center;
     }
+    img{
+        margin-top: 200px;
+        width: 150px;
+    }
+    button{
+       -webkit-box-shadow: 0 10px 30px 0 rgba(95,186,233,0.4);
+       box-shadow: 0 10px 30px 0 rgba(95,186,233,0.4);
+       margin: 15px;
+    }
+     .register {
+        margin-top: 10px;
+        text-align: center;
+        border: none;
+        padding: 15px 80px;
+        text-decoration: none;
+        display: inline-block;
+        text-transform: uppercase;
+        font-size: 13px;
+        transition: all 0.3s ease-in-out;
+        width: 85%;
+        height: 35px;
+        color: #ffffff;
+        }
+        input[type=text], input[type=email], input[type=password] {
+        background-color: #f6f6f6;
+        border: none;
+        color: #535353;
+        padding: 15px 32px;
+        text-decoration: none;
+        font-size: 16px;
+        margin: 5px;
+        width: 85%;
+        border: 2px solid #f6f6f6;
+        height: 35px;
+        text-align: center;
+        margin: 0 auto;
+        margin-bottom: 10px;
+        }
 }
