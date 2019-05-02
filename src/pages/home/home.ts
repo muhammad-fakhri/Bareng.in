@@ -30,6 +30,7 @@ export class HomePage {
   end = 'chicago, il';
   directionsService = new google.maps.DirectionsService;
   directionsDisplay = new google.maps.DirectionsRenderer;
+  
 
   constructor(
   	public navCtrl: NavController, 
