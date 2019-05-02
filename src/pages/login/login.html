@@ -1,17 +1,14 @@
-<ion-content padding center text-center class="login">
+<ion-content padding center text-center>
+  <img src="assets/image/logo.png" alt="logo">
   <ion-title>Bareng.in <br> IPB
   </ion-title>
   <ion-list>
-    <ion-item>
       <ion-input placeholder="Email" type="email" [(ngModel)]="email"></ion-input>
-    </ion-item>
-    <ion-item>
-        <ion-input placeholder="Password" type="password" [(ngModel)]="password"></ion-input>
-      </ion-item>
+      <ion-input placeholder="Password" type="password" [(ngModel)]="password"></ion-input>
   </ion-list>
 
 
-  <button ion-button full (click)="loginAcc()" [ngStyle]=" !isSelected&&{'background-color':'yellow'}">Log in</button>
+  <button ion-button full (click)="loginAcc()" color="roze" class="login">Log in</button>
   <button (click)=goForget() >Forgot Password</button>
 
   <p>Don't have an account? <button (click)=goRegister()>Sign up.</button></p>

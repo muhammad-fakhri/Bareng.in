@@ -11,7 +11,6 @@ import { HaltelocationPage } from '../pages/haltelocation/haltelocation';
 import { ParkinghistoryPage } from '../pages/parkinghistory/parkinghistory';
 import { AccountsettingsPage } from '../pages/accountsettings/accountsettings';
 import { OpeningPage } from '../pages/opening/opening';
-import { ForgetPage } from '../pages/forget/forget';
 
 @Component({
   templateUrl: 'app.html'
@@ -19,7 +18,7 @@ import { ForgetPage } from '../pages/forget/forget';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage:any = LoginPage;
+  rootPage:any = OpeningPage;
   
   pages: Array<{title: string, component:any}>;
 
@@ -33,7 +32,6 @@ export class MyApp {
         {title: 'Parking History', component: ParkinghistoryPage},
         {title: 'Account Settings', component: AccountsettingsPage},
         {title: 'Logout', component: LogoutPage},
-        {title: 'Reset Password', component: ForgetPage}
       ];
   }
     

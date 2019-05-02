@@ -10,21 +10,17 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding class="register">
+<ion-content padding>
   <ion-list>
-    <ion-item>
-      <ion-input placeholder="Name" [(ngModel)]="name"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-input placeholder="Email" [(ngModel)]="email"></ion-input>
-    </ion-item>
-    <ion-item>
+      <ion-input placeholder="Name" [(ngModel)]="name" type="text"></ion-input>
+      <ion-input placeholder="Email" [(ngModel)]="email" type="email"></ion-input>
       <ion-input placeholder="Password" [(ngModel)]="password" type="password"></ion-input>
-    </ion-item>
-    <ion-item>
-        <ion-input placeholder="Repeat password" [(ngModel)]="repassword" type="password"></ion-input>
-    </ion-item>
+      <ion-input placeholder="Repeat password" [(ngModel)]="repassword" type="password"></ion-input>
   </ion-list>
 
-  <button ion-button full (click)="register()" [ngStyle]=" !isSelected&&{'background-color':'yellow'}">Sign up</button>
+  <button ion-button full (click)="register()" color="roze" class="register">Sign up</button>
+  <footer>
+      <img src="assets/image/logo.png" alt="logo">
+  </footer>
+  
 </ion-content>
