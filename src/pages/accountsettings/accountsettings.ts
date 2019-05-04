@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { HomePage } from '../home/home';
+import { AlertController } from 'ionic-angular';
 
 /**
  * Generated class for the AccountsettingsPage page.
@@ -23,7 +24,7 @@ export class AccountsettingsPage {
   phonee: string;
   pic: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController) {
   }
 
   ionViewDidLoad() {
@@ -35,6 +36,14 @@ export class AccountsettingsPage {
     if(this.email.length==0 || this.password.length==0){
       alert("Please fill all fields");
     }
+    else {
+        const alert = this.alertCtrl.create({
+          title: 'Updated!',
+          subTitle: 'Your account data has successfully saved!',
+          buttons: ['OK']
+        });
+        alert.present();
+      }
     this.navCtrl.setRoot(HomePage); 
   }
 
