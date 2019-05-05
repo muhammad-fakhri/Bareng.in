@@ -1,50 +1,40 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 import { HomePage } from '../home/home';
 import { AlertController } from 'ionic-angular';
+import { AngularFireAuth } from 'angularfire2/auth';
+import { Profile } from '../../models/profile/profile.interface';
+// import { AngularFireDatabase } from 'angularfire2/database'
+// import { Observable } from 'rxjs';
 
-/**
- * Generated class for the AccountsettingsPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-
-@IonicPage()
 @Component({
   selector: 'page-accountsettings',
   templateUrl: 'accountsettings.html',
 })
+
 export class AccountsettingsPage {
-  name: string;
-  email: string;
-  password: string;
-  licensePlate: string;
-  address: string;
-  phonee: string;
-  pic: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController) {
+  //Buat profile object
+  profile = {} as Profile;
+
+  //Buat reference untuk ke database firebase
+  // profileRef:Observable<Profile[]>
+
+  constructor(
+    public navCtrl: NavController, 
+    public navParams: NavParams,
+    private fire: AngularFireAuth
+    // private database: AngularFireDatabase
+    ) {
+    // this.profileRef = this.database.list('user-profile');
+    this.email = fire.auth.currentUser.email;
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad AccountsettingsPage');
-  }
+  updateData(profile: Profile) {
+    console.log(profile);
+    // this.profileRef.push(this.profile);
 
-  Home() {
-   
-    if(this.email.length==0 || this.password.length==0){
-      alert("Please fill all fields");
-    }
-    else {
-        const alert = this.alertCtrl.create({
-          title: 'Updated!',
-          subTitle: 'Your account data has successfully saved!',
-          buttons: ['OK']
-        });
-        alert.present();
-      }
-    this.navCtrl.setRoot(HomePage); 
+    // this.navCtrl.setRoot(HomePage); 
   }
 
 }
