@@ -4,6 +4,7 @@ import { RegisterPage } from '../register/register';
 import { HomePage } from '../home/home';
 import { Events } from 'ionic-angular';
 import { ForgetPage } from '../forget/forget';
+import { AlertController } from 'ionic-angular';
 
 @IonicPage()
 @Component({
@@ -14,8 +15,9 @@ export class LoginPage {
 
   email: string;
   password: string;
-  
-  constructor(public navCtrl: NavController, public navParams: NavParams, public events: Events) {
+  public resources = [];
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, public events: Events, public alertCtrl: AlertController) {
 
   }
   ionViewDidLload() {
@@ -23,10 +25,14 @@ export class LoginPage {
   }
   loginAcc() {
     console.log("Email: "+ this.email);
-
     console.log("Password: "+ this.password);
-    if(this.email.length==0 || this.password.length==0){
-      alert("Please fill all fields");
+    
+    if((this.email.length===0) || this.password.length===0){
+      const alert = this.alertCtrl.create({
+        subTitle: 'Please fill all fields',
+        buttons: ['OK']
+      });
+      alert.present();
     }
     else {
       this.events.publish('user: loggedin');
