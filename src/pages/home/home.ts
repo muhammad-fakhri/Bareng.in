@@ -1,25 +1,16 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
 import { NavController, NavParams, IonicPage } from 'ionic-angular';
-import { Servers } from '../../providers/server';
-import { DataSource } from '../../providers/datasource';
+import { AngularFireAuth } from 'angularfire2/auth';
 
-/**
- * Generated class for the HomePage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 declare var google;
-@IonicPage()
 @Component({
   selector: 'page-home',
-  templateUrl: 'home.html',
-  providers:[Servers]
+  templateUrl: 'home.html'
 })
 export class HomePage {
 
+  email: string;
 	public data:any;
-	public toggle: boolean = false;
   public LotName: string;
   public LotQuota: number;
   public LotAddress: string;
@@ -35,45 +26,9 @@ export class HomePage {
   constructor(
   	public navCtrl: NavController, 
   	public navParams: NavParams,
-  	public db: Servers,
-  	public datasource: DataSource
+    private fire: AngularFireAuth
   	) {
-      this.db.getData().subscribe(data =>{
-          this.datasource.source = data.json();  
-      });
-  }
-
-  createItem(newitem){
-      let i = { 
-      	'ParkLotName': newitem.value
-      	// 'ParkLotQuota': newitem.LotQuota,
-      	// 'ParkLotAddress': newitem.LotAddress,
-      	 };
-      this.db.create(i);
-  }
-
-  deleteItem(item){
-    let result = this.db.delete(item);
-    let index = this.datasource.source.indexOf(item);
-    this.datasource.source.splice(index,1);
-    console.log(result);	
-  }
-
-  editItem(item){
-    this.toggle = true;
-    this.LotName = item.LotName;
-    // this.LotQuota = item.LotQuota;
-    // this.LotAddress = item.LotAddress;
-    this.datasource.tempdata = item;
-  }
-
-  updateItem(LotName){
-    let i = { "ParkLotId": this.datasource.tempdata.id,"ParkLotName": LotName.value };
-    let result = this.db.update(i);
-    let index = this.datasource.source.indexOf(this.datasource.tempdata);
-    this.datasource.source[index] = i;
-    console.log(result);
-    this.toggle = false;
+    this.email = fire.auth.currentUser.email;
   }
 
   ionViewDidLoad() {

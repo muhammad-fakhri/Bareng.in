@@ -18,24 +18,24 @@
     
   <ion-list>
     <ion-item>
-        <ion-input placeholder="Name" [(ngModel)]="name"></ion-input>
+        <ion-input placeholder="Name" [(ngModel)]="profile.name"></ion-input>
     </ion-item>
     <ion-item>
-        <ion-input placeholder="Email" type="email" [(ngModel)]="email"></ion-input>
+        <ion-input placeholder="Email" type="email" [(ngModel)]="profile.email"></ion-input>
     </ion-item>
     <ion-item>
-        <ion-input placeholder="Password" type="password" [(ngModel)]="password"></ion-input>
+        <ion-input placeholder="New  Password" type="password" [(ngModel)]="password"></ion-input>
     </ion-item>
     <ion-item>
-        <ion-input placeholder="License Plate" [(ngModel)]="licensePlate"></ion-input>
+        <ion-input placeholder="License Plate" [(ngModel)]="profile.license_plate"></ion-input>
     </ion-item>
     <ion-item>
-        <ion-input placeholder="Address" [(ngModel)]="address"></ion-input>
+        <ion-input placeholder="Address" [(ngModel)]="profile.address"></ion-input>
     </ion-item>
     <ion-item>
-        <ion-input placeholder="Phone Number" [(ngModel)]="phonee"></ion-input>
+        <ion-input placeholder="Phone Number" [(ngModel)]="profile.phone_number"></ion-input>
     </ion-item>
   </ion-list>
 
-  <button ion-button (click)=Home()>Save</button>
+  <button ion-button (click)=updateData(profile)>Save</button>
 </ion-content>

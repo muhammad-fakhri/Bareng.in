@@ -1,7 +1,12 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { HomePage } from '../home/home';
+<<<<<<< HEAD
 import { AlertController } from 'ionic-angular';
+=======
+import { AngularFireAuth } from 'angularfire2/auth';
+import { LoginPage } from '../login/login';
+>>>>>>> eb0d58f37cfbab1daf285363891b89c56d7debdc
 
 /**
  * Generated class for the RegisterPage page.
@@ -22,7 +27,15 @@ export class RegisterPage {
   password: string;
   repassword: string;
 
+<<<<<<< HEAD
   constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController) {
+=======
+  constructor(
+    public navCtrl: NavController, 
+    public navParams: NavParams,
+    private fire: AngularFireAuth
+    ) {
+>>>>>>> eb0d58f37cfbab1daf285363891b89c56d7debdc
   }
   
   ionViewDidLoad() {
@@ -30,6 +43,7 @@ export class RegisterPage {
   }
 
   register(){
+<<<<<<< HEAD
     if(this.name.length===0 || this.email.length===0 || this.password.length===0){
       const alert = this.alertCtrl.create({
         subTitle: 'Please fill all fields',
@@ -54,5 +68,16 @@ export class RegisterPage {
     else {
         this.navCtrl.setRoot(HomePage);
     }
+=======
+    this.fire.auth.createUserWithEmailAndPassword(this.email, this.password)
+    .then(data => {
+      // console.log('dapet datanya yeay !', data);
+      console.log('bakal register orang pake ', this.email, this.password);
+      this.navCtrl.setRoot(LoginPage);
+    })
+    .catch(error => {
+      return console.log('Dapet error ', error);
+    });
+>>>>>>> eb0d58f37cfbab1daf285363891b89c56d7debdc
   }
 }

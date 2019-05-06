@@ -1,12 +1,10 @@
 import { Component } from '@angular/core';
-import { NavController, IonicPage, NavParams } from 'ionic-angular';
+import { Events, NavController, NavParams, AlertController } from 'ionic-angular';
 import { RegisterPage } from '../register/register';
 import { HomePage } from '../home/home';
-import { Events } from 'ionic-angular';
 import { ForgetPage } from '../forget/forget';
-import { AlertController } from 'ionic-angular';
-
-@IonicPage()
+import { AngularFireAuth } from 'angularfire2/auth';
+ 
 @Component({
   selector: 'page-login',
   templateUrl: 'login.html'
@@ -15,29 +13,36 @@ export class LoginPage {
 
   email: string;
   password: string;
-  public resources = [];
-
-  constructor(public navCtrl: NavController, public navParams: NavParams, public events: Events, public alertCtrl: AlertController) {
+  
+  constructor(
+    public navCtrl: NavController,
+    private alertCtrl: AlertController, 
+    public navParams: NavParams, 
+    public events: Events,
+    private fire: AngularFireAuth
+    ) {
 
   }
-  ionViewDidLload() {
-    console.log('ionViewDidLoad LoginPage');
+
+  alert(message: string) {
+    this.alertCtrl.create({
+      message: message,
+      buttons: ['OK']
+    }).present();
   }
-  loginAcc() {
-    console.log("Email: "+ this.email);
-    console.log("Password: "+ this.password);
-    
-    if((this.email.length===0) || this.password.length===0){
-      const alert = this.alertCtrl.create({
-        subTitle: 'Please fill all fields',
-        buttons: ['OK']
-      });
-      alert.present();
-    }
-    else {
-      this.events.publish('user: loggedin');
+
+  login() {
+    this.fire.auth.signInWithEmailAndPassword(this.email, this.password)
+    .then( data => {
+      console.log('datanya nih ! ', data);
+      console.log('Akunnya ada, user bakal di log in !');
+      this.alert('Selamat, kamu berhasil login !');
       this.navCtrl.setRoot(HomePage);
-    }
+    })
+    .catch(error => {
+      console.log('Ada error nih !', error);
+      this.alert(error.message);
+    })
   }
 
   goRegister(){
