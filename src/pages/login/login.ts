@@ -24,7 +24,7 @@ export class LoginPage {
     public events: Events,
     private fire: AngularFireAuth,
     public data: Data,
-    public http: Http,
+    public http: Http
     ) {
 
   }

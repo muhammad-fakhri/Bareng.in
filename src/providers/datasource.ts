@@ -36,4 +36,14 @@ export class Data {
       return value;
     });
   }
+
+   getDataHalte() {
+    return this.storage.get('halte_lot').then((value) => {
+      return value;
+    });
+  }
+
+  setDataHalte(data:any) {
+    this.storage.set('halte_lot');
+  }
 }
