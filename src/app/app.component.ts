@@ -11,6 +11,7 @@ import { HaltelocationPage } from '../pages/haltelocation/haltelocation';
 import { ParkinghistoryPage } from '../pages/parkinghistory/parkinghistory';
 import { AccountsettingsPage } from '../pages/accountsettings/accountsettings';
 import { OpeningPage } from '../pages/opening/opening';
+import { ParkirPage } from '../pages/parkir/parkir';
 
 @Component({
   templateUrl: 'app.html'

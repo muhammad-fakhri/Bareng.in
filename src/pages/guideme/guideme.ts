@@ -43,8 +43,8 @@ export class GuidemePage {
 
     alert.addButton('Cancel');
     alert.addButton('OK');{
-      this.navCtrl.setRoot(ParkirPage)
-    };
+      this.navCtrl.setRoot(ParkirPage);
+    }
     alert.present();
   }
 }

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
-/**
+import { HomePage } from '../home/home';
+ /**
  * Generated class for the ParkirPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
@@ -21,5 +21,7 @@ export class ParkirPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad ParkirPage');
   }
-
+  backtoHome() {
+    this.navCtrl.setRoot(HomePage);
+  }
 }
