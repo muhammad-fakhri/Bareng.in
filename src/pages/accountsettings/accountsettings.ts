@@ -19,7 +19,7 @@ export class AccountsettingsPage {
   id: number;
   name: string;
   email: string;
-  password: string;
+  // password: string;
   license_plate: string;
   address: string;
   phone_number: number;
@@ -39,7 +39,7 @@ export class AccountsettingsPage {
       this.id = user.id;
       this.name = user.name;
       this.email = user.email;
-      this.password = user.password;
+      // this.password = user.password;
       this.license_plate = user.license_plate;
       this.address = user.address;
       this.phone_number = user.phone_number;
@@ -55,15 +55,15 @@ export class AccountsettingsPage {
         // password:    this.password,
         license_plate:    this.license_plate,
         address:    this.address,
-        phone_number:    this.phone_number,
+        phone_number:    this.phone_number
       });
     console.log(input);
     this.http.post(this.data.BASE_URL+"/edit_profile.php", input)
     .subscribe(data => {
-      // let response = data.json();
+      let response = data.json();
       console.log(response);
 
-      if(response.status=="200"){
+      if(true){
           let alert = this.alertCtrl.create({
           title: 'Profil Berhasil Diubah !',
           subTitle: '',
