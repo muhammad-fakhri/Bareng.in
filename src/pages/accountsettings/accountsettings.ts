@@ -16,7 +16,7 @@ export class AccountsettingsPage {
 
   //Buat profile object
   profile = {} as Profile;
-
+  email: string;
   //Buat reference untuk ke database firebase
   // profileRef:Observable<Profile[]>
 

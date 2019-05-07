@@ -5,6 +5,18 @@
   Ionic pages and navigation.
 -->
 <ion-content padding class="opening" padding>
-  <img src="assets/image/logo.png" alt="logo">
-  <button ion-button (click)="getStarted()" color="secondary">Get Started</button>
+    <ion-slides pager>
+
+        <ion-slide style="background-color:white">
+          <img src="assets/image/logo.png" alt="logo">
+        </ion-slide>
+      
+        <ion-slide style="background-color:white">
+            <img src="assets/image/logo.png" alt="logo">
+            <h4>What is Bareng.in?</h4>
+          <button ion-button (click)="getStarted()" color="secondary">Get Started</button>
+        </ion-slide>
+      
+      </ion-slides>
+  
 </ion-content>
