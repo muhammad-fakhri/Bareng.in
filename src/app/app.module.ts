@@ -20,6 +20,7 @@ import { AccountsettingsPage } from '../pages/accountsettings/accountsettings';
 import { OpeningPage } from '../pages/opening/opening';
 import { ForgetPage } from '../pages/forget/forget';
 import { firebaseConfig } from './firebaseconfig';
+import { ParkirPage } from '../pages/parkir/parkir';
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import { firebaseConfig } from './firebaseconfig';
     ParkinghistoryPage,
     AccountsettingsPage,
     LogoutPage,
-    ForgetPage
+    ForgetPage,
+    ParkirPage
   ],
   imports: [
     BrowserModule,
@@ -57,7 +59,8 @@ import { firebaseConfig } from './firebaseconfig';
     ParkinghistoryPage,
     AccountsettingsPage,
     LogoutPage,
-    ForgetPage
+    ForgetPage,
+    ParkirPage
   ],
   providers: [
     StatusBar,
