@@ -1,6 +1,6 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
 import { NavController, NavParams, IonicPage } from 'ionic-angular';
-import { AngularFireAuth } from 'angularfire2/auth';
+// import { AngularFireAuth } from 'angularfire2/auth';
 
 declare var google;
 @Component({
@@ -9,7 +9,7 @@ declare var google;
 })
 export class HomePage {
 
-  email: string;
+  // email: string;
 	public data:any;
   public LotName: string;
   public LotQuota: number;
@@ -25,10 +25,10 @@ export class HomePage {
 
   constructor(
   	public navCtrl: NavController, 
-  	public navParams: NavParams,
-    private fire: AngularFireAuth
+  	public navParams: NavParams
+    // private fire: AngularFireAuth
   	) {
-    this.email = fire.auth.currentUser.email;
+    // this.email = fire.auth.currentUser.email;
   }
 
   ionViewDidLoad() {

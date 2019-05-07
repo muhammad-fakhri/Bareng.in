@@ -20,7 +20,9 @@ import { AccountsettingsPage } from '../pages/accountsettings/accountsettings';
 import { OpeningPage } from '../pages/opening/opening';
 import { ForgetPage } from '../pages/forget/forget';
 import { firebaseConfig } from './firebaseconfig';
-
+import { Data } from '../providers/datasource';
+// import { Storage } from '@ionic/storage';
+import { IonicStorageModule } from '@ionic/storage';
 
 @NgModule({
   declarations: [
@@ -43,7 +45,8 @@ import { firebaseConfig } from './firebaseconfig';
     IonicModule.forRoot(MyApp),
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireAuthModule,
-    AngularFireDatabaseModule
+    AngularFireDatabaseModule,
+    IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -62,6 +65,8 @@ import { firebaseConfig } from './firebaseconfig';
   providers: [
     StatusBar,
     SplashScreen,
+    Data,
+    Storage,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
