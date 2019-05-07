@@ -27,7 +27,7 @@ export class Servers {
     .map(res => res )
     .subscribe(data =>{
           //console.log(data);  
-          this.datasource.source.push(data.json());
+          // this.datasource.source.push(data.json());
      });
 
     //return result;
