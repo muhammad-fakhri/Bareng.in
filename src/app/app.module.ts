@@ -23,6 +23,7 @@ import { firebaseConfig } from './firebaseconfig';
 import { Data } from '../providers/datasource';
 // import { Storage } from '@ionic/storage';
 import { IonicStorageModule } from '@ionic/storage';
+import { ParkirPage } from '../pages/parkir/parkir';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { IonicStorageModule } from '@ionic/storage';
     ParkinghistoryPage,
     AccountsettingsPage,
     LogoutPage,
-    ForgetPage
+    ForgetPage,
+    ParkirPage
   ],
   imports: [
     BrowserModule,
@@ -60,7 +62,8 @@ import { IonicStorageModule } from '@ionic/storage';
     ParkinghistoryPage,
     AccountsettingsPage,
     LogoutPage,
-    ForgetPage
+    ForgetPage,
+    ParkirPage
   ],
   providers: [
     StatusBar,

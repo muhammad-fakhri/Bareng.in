@@ -16,6 +16,7 @@ import { Http } from '@angular/http';
 
 export class AccountsettingsPage {
 
+<<<<<<< HEAD
   id: number;
   name: string;
   email: string;
@@ -23,6 +24,13 @@ export class AccountsettingsPage {
   license_plate: string;
   address: string;
   phone_number: number;
+=======
+  //Buat profile object
+  profile = {} as Profile;
+  email: string;
+  //Buat reference untuk ke database firebase
+  // profileRef:Observable<Profile[]>
+>>>>>>> d0bf0007834b315343e3551333b19a07a51a2af4
 
   constructor(
     public navCtrl: NavController, 
