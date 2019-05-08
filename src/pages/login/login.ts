@@ -3,10 +3,10 @@ import { Events, NavController, NavParams, AlertController } from 'ionic-angular
 import { RegisterPage } from '../register/register';
 import { HomePage } from '../home/home';
 import { ForgetPage } from '../forget/forget';
-// import { AngularFireAuth } from 'angularfire2/auth';
 import { Http } from '@angular/http';
 import { Data } from '../../providers/datasource';
 import { NgForm } from '@angular/forms';
+// import { AngularFireAuth } from 'angularfire2/auth';
  
 @Component({
   selector: 'page-login',
@@ -18,17 +18,18 @@ export class LoginPage {
   password: string;
   
   constructor(
+    // private fire: AngularFireAuth,
     public navCtrl: NavController,
     private alertCtrl: AlertController, 
     public navParams: NavParams, 
     public events: Events,
-    // private fire: AngularFireAuth,
     public data: Data,
     public http: Http
-    ) {
+    ) {}
 
+  ionViewDidLoad(){
+    console.log("Let's login !");
   }
-
   // login() {
   //   this.fire.auth.signInWithEmailAndPassword(this.email, this.password)
   //   .then( data => {
@@ -48,6 +49,7 @@ export class LoginPage {
       email: this.email,
       password: this.password
     });
+    //query data user dari API
     this.http.post(this.data.BASE_URL+"/login.php",input).subscribe(data => {
         console.log(input);
         let response = data.json();

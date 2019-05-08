@@ -1,15 +1,8 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 import { AlertController } from 'ionic-angular';
 import { ParkirPage } from '../parkir/parkir';
-/**
- * Generated class for the GuidemePage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
-@IonicPage()
 @Component({
   selector: 'page-guideme',
   templateUrl: 'guideme.html',
@@ -18,13 +11,13 @@ import { ParkirPage } from '../parkir/parkir';
 export class GuidemePage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController) {
-    
+
   }
-  
+
   ionViewDidLoad() {
     console.log('ionViewDidLoad GuidemePage');
   }
-  
+
   showRadio() {
     let alert = this.alertCtrl.create();
     alert.setTitle('Where are you?');
@@ -42,7 +35,7 @@ export class GuidemePage {
     });
 
     alert.addButton('Cancel');
-    alert.addButton('OK');{
+    alert.addButton('OK'); {
       this.navCtrl.setRoot(ParkirPage);
     }
     alert.present();

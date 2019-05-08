@@ -15,14 +15,8 @@
 
 <ion-content padding class="haltelocation">
   <ion-list>
-    <ion-item>{{ halte_name }}</ion-item>
-<!--     <ion-item>Halte Faperta</ion-item>
-    <ion-item>Halte FMIPA</ion-item>
-    <ion-item>Halte Astri</ion-item>
-    <ion-item>Halte Menwa</ion-item>
-    <ion-item>Halte Al-Hurriyah</ion-item>
-    <ion-item>Halte LSI</ion-item>
-    <ion-item>Halte FPIK</ion-item>
-    <ion-item>Halte Rektorat</ion-item> -->
+    <ion-item *ngFor="let item of halte">
+      <h2>{{ item.halte_name }}</h2>
+    </ion-item>
   </ion-list>
 </ion-content>

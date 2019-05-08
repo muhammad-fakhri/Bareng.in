@@ -2,12 +2,12 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { HomePage } from '../home/home';
 import { AlertController } from 'ionic-angular';
+import { Data } from '../../providers/datasource';
+import { Http } from '@angular/http'; 
 // import { AngularFireAuth } from 'angularfire2/auth';
 // import { Profile } from '../../models/profile/profile.interface';
 // import { AngularFireDatabase } from 'angularfire2/database'
 // import { Observable } from 'rxjs';
-import { Data } from '../../providers/datasource';
-import { Http } from '@angular/http'; 
 
 @Component({
   selector: 'page-accountsettings',
@@ -19,7 +19,6 @@ export class AccountsettingsPage {
   id: number;
   name: string;
   email: string;
-  // password: string;
   license_plate: string;
   address: string;
   phone_number: number;
@@ -27,19 +26,17 @@ export class AccountsettingsPage {
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
-    // private fire: AngularFireAuth,
     public http: Http,
     public data: Data,
     public alertCtrl: AlertController
     ) {}
 
-  ionViewWillEnter(){
+  ionViewDidEnter(){
     this.data.getDataUser().then((user) => {
       // console.log("Ini adalah datanya " + user)
       this.id = user.id;
       this.name = user.name;
       this.email = user.email;
-      // this.password = user.password;
       this.license_plate = user.license_plate;
       this.address = user.address;
       this.phone_number = user.phone_number;
@@ -52,7 +49,6 @@ export class AccountsettingsPage {
         id: this.id,
         name:    this.name,
         email:    this.email,
-        // password:    this.password,
         license_plate:    this.license_plate,
         address:    this.address,
         phone_number:    this.phone_number
@@ -64,6 +60,8 @@ export class AccountsettingsPage {
       console.log(response);
 
       if(response.status == "200"){
+        //update data user di local
+        this.data.setDataUser(response.data);
           let alert = this.alertCtrl.create({
           title: 'Profil Berhasil Diubah !',
           subTitle: '',

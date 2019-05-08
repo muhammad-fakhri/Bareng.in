@@ -1,5 +1,5 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
-import { NavController, NavParams, IonicPage } from 'ionic-angular';
+import { NavController, NavParams} from 'ionic-angular';
 // import { AngularFireAuth } from 'angularfire2/auth';
 
 declare var google;
@@ -9,7 +9,6 @@ declare var google;
 })
 export class HomePage {
 
-  // email: string;
 	public data:any;
   public LotName: string;
   public LotQuota: number;
@@ -20,20 +19,17 @@ export class HomePage {
   start = 'chicago, il';
   end = 'chicago, il';
   directionsService = new google.maps.DirectionsService;
-  directionsDisplay = new google.maps.DirectionsRenderer;
-  
+  directionsDisplay = new google.maps.DirectionsRenderer;  
 
   constructor(
+    // private fire: AngularFireAuth,
   	public navCtrl: NavController, 
   	public navParams: NavParams
-    // private fire: AngularFireAuth
-  	) {
-    // this.email = fire.auth.currentUser.email;
-  }
+  	) {}
 
   ionViewDidLoad() {
+    console.log('Loading Map dari Google MAP API');
     this.initMap();
-    console.log('ionViewDidLoad HomePage');
   }
 
   initMap() {
@@ -58,5 +54,4 @@ export class HomePage {
       }
     });
   }
-
 }
