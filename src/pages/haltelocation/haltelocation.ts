@@ -26,7 +26,7 @@ export class HaltelocationPage {
   }
 
   ionViewWillEnter(){
-  	this.http.get(this.data.BASE_URL+"/halte.php")
+  	this.http.get(this.data.BASE_URL+"/get_halte.php")
   		.subscribe(dataHalte=>{
   			let response = dataHalte.json();
   			console.log(response);
@@ -45,10 +45,10 @@ export class HaltelocationPage {
            }
       });
 
-    this.data.getDataUser().then((halte) => {
-      this.halteId = halte.halteId;
+    this.data.getDataHalte().then((halte) => {
+      // this.halteId = halte.halteId;
       this.halte_name = halte.halte_name;
-      this.halte_info = halte.halte_info;
+      // this.halte_info = halte.halte_info;
     });
   	}
   }

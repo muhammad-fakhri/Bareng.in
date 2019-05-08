@@ -5,7 +5,7 @@ import { Storage } from '@ionic/storage';
 
 @Injectable()
 export class Data {
-  public BASE_URL = 'http://localhost/barengin/api';
+  public BASE_URL = 'http://localhost/barengin-api';
   // public BASE_URL = 'http://barengin.atspace.cc';
   
   public HAS_LOGGED_IN = 'status_login';
@@ -44,6 +44,6 @@ export class Data {
   }
 
   setDataHalte(data:any) {
-    this.storage.set('halte_lot');
+    this.storage.set('halte_lot', data);
   }
 }
