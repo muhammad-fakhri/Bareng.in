@@ -4,9 +4,9 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { HttpModule, JsonpModule } from '@angular/http';
-import { AngularFireModule } from 'angularfire2';
-import { AngularFireAuthModule } from 'angularfire2/auth';
-import { AngularFireDatabaseModule } from 'angularfire2/database';
+// import { AngularFireModule } from 'angularfire2';
+// import { AngularFireAuthModule } from 'angularfire2/auth';
+// import { AngularFireDatabaseModule } from 'angularfire2/database';
   
 import { MyApp } from './app.component';
 import { LoginPage } from '../pages/login/login';
@@ -18,12 +18,12 @@ import { HaltelocationPage } from '../pages/haltelocation/haltelocation';
 import { ParkinghistoryPage } from '../pages/parkinghistory/parkinghistory';
 import { AccountsettingsPage } from '../pages/accountsettings/accountsettings';
 import { OpeningPage } from '../pages/opening/opening';
+import { ParkirPage } from '../pages/parkir/parkir';
 import { ForgetPage } from '../pages/forget/forget';
-import { firebaseConfig } from './firebaseconfig';
+// import { firebaseConfig } from './firebaseconfig';
 import { Data } from '../providers/datasource';
 // import { Storage } from '@ionic/storage';
 import { IonicStorageModule } from '@ionic/storage';
-import { ParkirPage } from '../pages/parkir/parkir';
 
 @NgModule({
   declarations: [
@@ -45,10 +45,10 @@ import { ParkirPage } from '../pages/parkir/parkir';
     HttpModule,
     JsonpModule,
     IonicModule.forRoot(MyApp),
-    AngularFireModule.initializeApp(firebaseConfig),
-    AngularFireAuthModule,
-    AngularFireDatabaseModule,
     IonicStorageModule.forRoot()
+    // AngularFireModule.initializeApp(firebaseConfig),
+    // AngularFireAuthModule,
+    // AngularFireDatabaseModule,
   ],
   bootstrap: [IonicApp],
   entryComponents: [

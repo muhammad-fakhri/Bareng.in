@@ -3,7 +3,7 @@ import { Events, NavController, NavParams, AlertController } from 'ionic-angular
 import { RegisterPage } from '../register/register';
 import { HomePage } from '../home/home';
 import { ForgetPage } from '../forget/forget';
-import { AngularFireAuth } from 'angularfire2/auth';
+// import { AngularFireAuth } from 'angularfire2/auth';
 import { Http } from '@angular/http';
 import { Data } from '../../providers/datasource';
 import { NgForm } from '@angular/forms';
@@ -22,7 +22,7 @@ export class LoginPage {
     private alertCtrl: AlertController, 
     public navParams: NavParams, 
     public events: Events,
-    private fire: AngularFireAuth,
+    // private fire: AngularFireAuth,
     public data: Data,
     public http: Http
     ) {

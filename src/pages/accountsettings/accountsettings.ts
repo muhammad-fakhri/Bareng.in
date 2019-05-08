@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { HomePage } from '../home/home';
 import { AlertController } from 'ionic-angular';
-import { AngularFireAuth } from 'angularfire2/auth';
+// import { AngularFireAuth } from 'angularfire2/auth';
 // import { Profile } from '../../models/profile/profile.interface';
 // import { AngularFireDatabase } from 'angularfire2/database'
 // import { Observable } from 'rxjs';
@@ -27,7 +27,7 @@ export class AccountsettingsPage {
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
-    private fire: AngularFireAuth,
+    // private fire: AngularFireAuth,
     public http: Http,
     public data: Data,
     public alertCtrl: AlertController
@@ -63,7 +63,7 @@ export class AccountsettingsPage {
       let response = data.json();
       console.log(response);
 
-      if(true){
+      if(response.status == "200"){
           let alert = this.alertCtrl.create({
           title: 'Profil Berhasil Diubah !',
           subTitle: '',
