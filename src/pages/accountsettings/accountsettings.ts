@@ -106,7 +106,7 @@ export class AccountsettingsPage {
           text: 'Cancel',
           handler: () => {
             console.log('Disagree clicked');
-            this.confirm.dismiss();
+            // this.confirm.dismiss();
           }
         },
         {
