@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { HomePage } from '../home/home';
+import { NavController, NavParams } from 'ionic-angular';
 import { LoginPage } from '../login/login';
 import { Http } from '@angular/http';
 import { Data } from '../../providers/datasource';
 import { AlertController } from 'ionic-angular';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 // import { AngularFireAuth } from 'angularfire2/auth';
-
+ 
 @Component({
   selector: 'page-register',
   templateUrl: 'register.html',
@@ -17,6 +17,7 @@ export class RegisterPage {
   email: string;
   password: string;
   repassword: string;
+  registerForm: FormGroup;
 
   constructor(
     // private fire: AngularFireAuth,
@@ -24,12 +25,32 @@ export class RegisterPage {
     public navParams: NavParams,
     public http: Http,
     public alertCtrl: AlertController,
-    public data: Data
+    public data: Data,
+    private formBuilder: FormBuilder
   ) {
+    this.registerForm = this.formBuilder.group({
+       name:['', Validators.compose([
+         Validators.required
+         ])],
+       email:['', Validators.compose([
+         Validators.required,
+         Validators.email
+         ])],
+       password:['', Validators.compose([
+         Validators.required
+         ])],
+       repassword:['', Validators.compose([
+         Validators.required
+         ])]
+    });
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad RegisterPage');
+  }
+
+  ionViewDidEnter() {
+    
   }
 
   // register(){
@@ -44,11 +65,12 @@ export class RegisterPage {
   //   });
   // }
   register() {
+    if (this.registerForm.valid) {
     let input = JSON.stringify({
-      name: this.name,
-      email: this.email,
-      password: this.password,
-      repassword: this.repassword
+      name: this.registerForm.controls['name'].value,
+      email: this.registerForm.controls['email'].value,
+      password: this.registerForm.controls['password'].value,
+      repassword: this.registerForm.controls['repassword'].value
     });
 
     //log hasil inputnya (ini cuma buat testing)
@@ -88,5 +110,6 @@ export class RegisterPage {
           alert.present();
         }
     });
+    }
   }
 }

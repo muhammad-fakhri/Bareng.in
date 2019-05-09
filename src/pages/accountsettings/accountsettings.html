@@ -30,5 +30,7 @@
       <ion-input placeholder="Phone Number" [(ngModel)]="phone_number"></ion-input>
     </ion-item>
   </ion-list>
-  <button ion-button (click)=updateData(profile)>Save</button>
+  <button ion-button (click)=updateData() full>Save Profile</button>
+  <br>
+  <button ion-button (click)=showConfirm() full clear color="danger">Delete Account</button>
 </ion-content>

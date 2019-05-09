@@ -2,15 +2,25 @@
   <img src="assets/image/logo.png" alt="logo">
   <ion-title>Bareng.in <br> IPB
   </ion-title>
-  <ion-list>
-      <ion-input placeholder="Email" type="email" [(ngModel)]="email" value=""></ion-input>
-      <ion-input placeholder="Password" type="password" [(ngModel)]="password"></ion-input>
-  </ion-list>
-
-
-  <button ion-button full (click)="login()" color="secondary" class="login">Log in</button>
+  <form [formGroup]="loginForm" (ngSubmit)=login()>
+    <ion-item>
+      <ion-input placeholder="Email" formControlName="email" type="email"></ion-input>
+    </ion-item>
+    <div *ngIf="loginForm.controls.email.hasError('required') && loginForm.controls.email.dirty">
+      Please enter an email
+    </div>
+    <div *ngIf="loginForm.controls.email.hasError('email') && loginForm.controls.email.dirty && !loginForm.controls.email.hasError('required')">
+      Please enter an valid email
+    </div>
+    <br>
+    <ion-item>
+      <ion-input placeholder="Password" formControlName="password" type="password"></ion-input>
+    </ion-item>
+    <div *ngIf="!loginForm.controls.password.valid && loginForm.controls.password.dirty">
+      Please enter a password
+    </div>
+    <button ion-button full type="submit" color="secondary" class="login" [disabled]="!loginForm.valid">Log in</button>
+  </form>
   <button (click)=goForget() color="dark" class="forgot ">Forgot Password</button>
-
   <p>Don't have an account? <button (click)=goRegister() color="dark" class="signup">Sign up.</button></p>
-
 </ion-content>
