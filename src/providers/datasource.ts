@@ -56,4 +56,14 @@ export class Data {
   setDataHalte(data: any) {
     this.storage.set('halte_lot', data);
   }
+
+  getDataParkLot() {
+    return this.storage.get('park_lot').then((value) => {
+      return value;
+    });
+  }
+
+  setDataParkLot(data: any) {
+    this.storage.set('park_lot', data);
+  }
 }

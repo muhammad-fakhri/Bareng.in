@@ -22,7 +22,7 @@ export class HaltelocationPage {
   ) {
     console.log('ionViewDidLoad HaltelocationPage');
         // Query data halte dari API
-        this.http.get(this.data.BASE_URL + "/get_halte.php")
+        this.http.get(this.data.BASE_URL + "/get_halte.php",{})
         .subscribe(dataHalte => {
           let response = dataHalte.json();
           console.log(response);
@@ -38,7 +38,7 @@ export class HaltelocationPage {
           }
           else {
             let alert = this.alertCtrl.create({
-              title: 'Ambil Kesalahan !',
+              title: 'Ada Kesalahan!',
               subTitle: 'Terjadi kesalahan saat mengambil data dari database !',
               buttons: ['OK']
             });

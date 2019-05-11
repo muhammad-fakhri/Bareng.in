@@ -45,7 +45,7 @@ export class AccountsettingsPage {
     //simpan update ke database
     let input = JSON.stringify({
       id: this.id,
-      name: this.name,
+      name: this.name, 
       email: this.email,
       license_plate: this.license_plate,
       address: this.address,
