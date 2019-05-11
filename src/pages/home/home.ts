@@ -10,13 +10,6 @@ declare var google;
   templateUrl: 'home.html'
 })
 export class HomePage {
-
-  // public data1: any;
-  // public data2: any;
-  // public LotName: string;
-  // public LotQuota: number;
-  // public LotAddress: string;
-
   @ViewChild('map') mapElement: ElementRef;
   map: any;
   place1: any; //naruh inputan dari view untuk tempat pertama
@@ -47,9 +40,9 @@ export class HomePage {
       .subscribe(dataParkLot => {
         let response = dataParkLot.json();
         if (response.status == "200") {
-          console.log("ini dia data tempat parkirnya bos", response);
+          // console.log("ini dia data tempat parkirnya bos", response);
           this.parkLot = response.data;
-          console.log(this.parkLot);
+          // console.log(this.parkLot);
         }
         else {
           let alert = this.alertCtrl.create({
@@ -61,7 +54,7 @@ export class HomePage {
         }
       });
     //tampilin mapsnya
-    console.log('Loading Map dari Google MAP API');
+    // console.log('Loading Map dari Google MAP API');
     this.initMap();
   }
 
@@ -84,8 +77,9 @@ export class HomePage {
   }
 
   tampilRute() {
-    console.log("titik start :", this.place1);
-    console.log("titik end :", this.place2);
+    //unutk testing aja
+    // console.log("titik start :", this.place1);
+    // console.log("titik end :", this.place2);
 
     //parsing dulu koordinatnya
     this.pos = this.place1.indexOf(',');
@@ -94,16 +88,19 @@ export class HomePage {
     this.temp3 = parseFloat(this.place2.substring(0, this.pos));
     this.temp4 = parseFloat(this.place2.substring(this.pos + 1, this.place2.length));
 
-    console.log("Ini adalah temp1 ; ", this.temp1);
-    console.log("Ini adalah temp2 ; ", this.temp2);
-    console.log("Ini adalah temp3 ; ", this.temp3);
-    console.log("Ini adalah temp4 ; ", this.temp4);
+    //untuk testing aja
+    // console.log("Ini adalah temp1 ; ", this.temp1);
+    // console.log("Ini adalah temp2 ; ", this.temp2);
+    // console.log("Ini adalah temp3 ; ", this.temp3);
+    // console.log("Ini adalah temp4 ; ", this.temp4);
 
     //make start and end point of route
     this.start = new google.maps.LatLng(this.temp1, this.temp2);
     this.end = new google.maps.LatLng(this.temp3, this.temp4);
-    console.log(this.start);
-    console.log(this.end);
+    
+    //untuk testing aja
+    // console.log(this.start);
+    // console.log(this.end);
 
     //do the route calculation
     this.calculateAndDisplayRoute();
