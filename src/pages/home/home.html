@@ -1,127 +1,110 @@
 <ion-header>
-  <ion-navbar>
-    <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button>
-    <ion-title>Bareng.in</ion-title>
-  </ion-navbar>
+    <ion-navbar>
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>Bareng.in</ion-title>
+    </ion-navbar>
 </ion-header>
 <ion-content padding class="home">
-  <ion-menu [content]="mycontent">
-    <ion-content>
-      <ion-list>
-        <ion-item menuClose detail-none>Close Menu</ion-item>
-      </ion-list>
-    </ion-content>
-  </ion-menu>
-  <h3>PETA IPB KITA</h3>
-  <div id="floating-panel">
-    <b>Start: </b>
-    <select [(ngModel)]="start" id="start" (change)="calculateAndDisplayRoute()">
-      <option value="chicago, il">Chicago</option>
-      <option value="st louis, mo">St Louis</option>
-      <option value="joplin, mo">Joplin, MO</option>
-      <option value="oklahoma city, ok">Oklahoma City</option>
-      <option value="amarillo, tx">Amarillo</option>
-      <option value="gallup, nm">Gallup, NM</option>
-      <option value="flagstaff, az">Flagstaff, AZ</option>
-      <option value="winona, az">Winona</option>
-      <option value="kingman, az">Kingman</option>
-      <option value="barstow, ca">Barstow</option>
-      <option value="san bernardino, ca">San Bernardino</option>
-      <option value="los angeles, ca">Los Angeles</option>
-    </select><br>
-    <b>End: </b>
-    <select [(ngModel)]="end" id="end" (change)="calculateAndDisplayRoute()">
-      <option value="chicago, il">Chicago</option>
-      <option value="st louis, mo">St Louis</option>
-      <option value="joplin, mo">Joplin, MO</option>
-      <option value="oklahoma city, ok">Oklahoma City</option>
-      <option value="amarillo, tx">Amarillo</option>
-      <option value="gallup, nm">Gallup, NM</option>
-      <option value="flagstaff, az">Flagstaff, AZ</option>
-      <option value="winona, az">Winona</option>
-      <option value="kingman, az">Kingman</option>
-      <option value="barstow, ca">Barstow</option>
-      <option value="san bernardino, ca">San Bernardino</option>
-      <option value="los angeles, ca">Los Angeles</option>
-    </select>
-  </div>
-  <div #map id="map"></div>
-  <h3>INFO IPB</h3>
-  <p>Halo user dengan email {{ email }}</p>
+    <ion-menu [content]="mycontent">
+        <ion-content>
+            <ion-list>
+                <ion-item menuClose detail-none>Close Menu</ion-item>
+            </ion-list>
+        </ion-content>
+    </ion-menu>
+    <h3>PETA IPB KITA</h3>
+    <div id="floating-panel">
+        <b>Start: </b>
+        <!-- (change)="calculateAndDisplayRoute()" -->
+        <select [(ngModel)]="place1" id="start">
+            <option value="(-6.564649, 106.730328)">Dramaga Tower</option>
+            <option value="chicago, il">Chicago</option>
+        </select><br>
+        <b>End: </b>
+        <select [(ngModel)]="place2" id="end">
+            <option value="(-6.559917, 106.725510)">Rektorat IPB</option>
+            <option value="chicago, il">Chicago</option>
+        </select>
+        <br>
+        <button ion-button (click)=tampilRute()>Tampilkan Rute</button>
+    </div>
+    <div #map id="map"></div>
+    <h3>INFO IPB</h3>
+    <p>Halo user dengan email {{ email }}</p>
 
     <ion-card>
         <ion-item>
-          <ion-avatar item-start>
-            <img src="assets/image/ipb.jpg">
-          </ion-avatar>
-          <h2>InfoIPB</h2>
-          <p>November 5, 1955</p>
-        </ion-item>
-      
-        <img src="assets/image/crazy.jpg">
-      
-        <ion-card-content>
-          <p>Diduga karna banyaknya projek tugas akhir, mahasiswa Ilmu Komputer IPB banyak yang menjadi stres.</p>
-        </ion-card-content>
-      
-        <ion-row>
-          <ion-col>
-            <button ion-button icon-start clear small>
-              <ion-icon name="thumbs-up"></ion-icon>
-              <div>1000 Likes</div>
-            </button>
-          </ion-col>
-          <ion-col>
-            <button ion-button icon-start clear small>
-              <ion-icon name="text"></ion-icon>
-              <div>578 Comments</div>
-            </button>
-          </ion-col>
-          <ion-col align-self-center text-center>
-            <ion-note>
-              1h ago
-            </ion-note>
-          </ion-col>
-        </ion-row>
-      
-      </ion-card>
-
-      <ion-card>
-          <ion-item>
             <ion-avatar item-start>
-              <img src="assets/image/ipb.jpg">
+                <img src="assets/image/ipb.jpg">
             </ion-avatar>
             <h2>InfoIPB</h2>
             <p>November 5, 1955</p>
-          </ion-item>
-        
-          <img src="assets/image/ujian.jpg">
-        
-          <ion-card-content>
-            <p>UAS akan dilaksanakan pada 17-26 Mei 2019.</p>
-          </ion-card-content>
-        
-          <ion-row>
+        </ion-item>
+
+        <img src="assets/image/crazy.jpg">
+
+        <ion-card-content>
+            <p>Diduga karna banyaknya projek tugas akhir, mahasiswa Ilmu Komputer IPB banyak yang menjadi stres.</p>
+        </ion-card-content>
+
+        <ion-row>
             <ion-col>
-              <button ion-button icon-start clear small>
-                <ion-icon name="thumbs-up"></ion-icon>
-                <div>12 Likes</div>
-              </button>
+                <button ion-button icon-start clear small>
+                    <ion-icon name="thumbs-up"></ion-icon>
+                    <div>1000 Likes</div>
+                </button>
             </ion-col>
             <ion-col>
-              <button ion-button icon-start clear small>
-                <ion-icon name="text"></ion-icon>
-                <div>4 Comments</div>
-              </button>
+                <button ion-button icon-start clear small>
+                    <ion-icon name="text"></ion-icon>
+                    <div>578 Comments</div>
+                </button>
             </ion-col>
             <ion-col align-self-center text-center>
-              <ion-note>
-                11h ago
-              </ion-note>
+                <ion-note>
+                    1h ago
+                </ion-note>
             </ion-col>
-          </ion-row>
-        
-        </ion-card>
+        </ion-row>
+
+    </ion-card>
+
+    <ion-card>
+        <ion-item>
+            <ion-avatar item-start>
+                <img src="assets/image/ipb.jpg">
+            </ion-avatar>
+            <h2>InfoIPB</h2>
+            <p>November 5, 1955</p>
+        </ion-item>
+
+        <img src="assets/image/ujian.jpg">
+
+        <ion-card-content>
+            <p>UAS akan dilaksanakan pada 17-26 Mei 2019.</p>
+        </ion-card-content>
+
+        <ion-row>
+            <ion-col>
+                <button ion-button icon-start clear small>
+                    <ion-icon name="thumbs-up"></ion-icon>
+                    <div>12 Likes</div>
+                </button>
+            </ion-col>
+            <ion-col>
+                <button ion-button icon-start clear small>
+                    <ion-icon name="text"></ion-icon>
+                    <div>4 Comments</div>
+                </button>
+            </ion-col>
+            <ion-col align-self-center text-center>
+                <ion-note>
+                    11h ago
+                </ion-note>
+            </ion-col>
+        </ion-row>
+
+    </ion-card>
 </ion-content>

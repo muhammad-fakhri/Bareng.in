@@ -80,7 +80,7 @@ export class AccountsettingsPage {
 
   deleteAccount(){
     // let id = this.id;
-    this.http.post(this.data.BASE_URL+"/delete_user.php?id="+this.id)
+    this.http.post(this.data.BASE_URL+"/delete_user.php?id="+this.id,{})
       .subscribe(data => {
         let response = data.json();
         console.log(response);
