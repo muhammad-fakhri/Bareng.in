@@ -1,6 +1,6 @@
 page-register {
     ion-content{
-        background-color: "primary";
+        background-color: color($colors, primary);
         background-size: cover;
         text-align: center;
     }
@@ -14,6 +14,7 @@ page-register {
        margin: 15px;
     }
      .register {
+        background-color:color($colors, primary);
         margin-top: 10px;
         text-align: center;
         border: none;

@@ -1,7 +1,11 @@
 page-accountsettings {
     ion-content{
-        background-color: "primary";
+        background-color: color($colors, primary);
         background-size: cover;
         text-align: center;
     }
+}
+
+.accountsetting{
+    background-color:color($colors, light);
 }

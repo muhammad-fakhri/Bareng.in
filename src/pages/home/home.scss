@@ -1,11 +1,11 @@
 page-home {
   ion-content{
-    background-color: "primary";
+    background-color: color($colors, light);
     background-size: cover;
     text-align: center;
 }
 .home {
-        background-color:"secondary";
+        background-color:color($colors, light);
     }
   #floating-panel {
     position: absolute;
