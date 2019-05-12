@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { Storage } from '@ionic/storage';
-
+ 
 @Injectable()
 export class Data {
   /*
@@ -11,7 +11,7 @@ export class Data {
   */
   // public BASE_URL = 'http://barengin.atspace.cc';
 
-  public BASE_URL = 'http://localhost/barengin';
+  public BASE_URL = 'http://localhost/barengin-api';
   public HAS_LOGGED_IN = 'status_login';
 
   constructor(
