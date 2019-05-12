@@ -1,32 +1,26 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, AlertController } from 'ionic-angular';
 import { Http } from '@angular/http';
 import { Data } from '../../providers/datasource';
 // import { AngularFireAuth } from 'angularfire2/auth';
-
 declare var google;
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
 })
 export class HomePage {
-
-  public data1: any;
-  public data2: any;
-  public LotName: string;
-  public LotQuota: number;
-  public LotAddress: string;
-
   @ViewChild('map') mapElement: ElementRef;
   map: any;
-  place1: any;
-  place2: any;
-  temp1: any;
-  temp2: any;
-  temp3: any;
-  temp4: any;
-  start: any;
-  end: any;
+  place1: any; //naruh inputan dari view untuk tempat pertama
+  place2: any; //naruh inputan dari view untuk tempat kedua
+  temp1: any; //nampung nilai Lat dari tempat pertama
+  temp2: any; //nampung nilai Lng dari tempat pertama
+  temp3: any; //nampung nilai Lat dari tempat kedua
+  temp4: any; //nampung nilai Lng dari tempat kedua
+  start: any; //nampung Lat dan Lng dari tempat pertama
+  pos: number; //untuk posisi koma di proses parsing
+  end: any; //nampung Lat dan Lng dari tempat kedua
+  parkLot: string; //nampung data dari database
   directionsService = new google.maps.DirectionsService;
   directionsDisplay = new google.maps.DirectionsRenderer;
 
@@ -35,11 +29,31 @@ export class HomePage {
     public navCtrl: NavController,
     public navParams: NavParams,
     public http: Http,
-    public data: Data
+    public data: Data,
+    public alertCtrl: AlertController
   ) { }
 
   ionViewDidLoad() {
-    console.log('Loading Map dari Google MAP API');
+    //ambil data tempat parkit dari database
+    this.http.get(this.data.BASE_URL + "/get_parklot.php", {})
+      .subscribe(dataParkLot => {
+        let response = dataParkLot.json();
+        if (response.status == "200") {
+          // console.log("ini dia data tempat parkirnya bos", response);
+          this.parkLot = response.data;
+          // console.log(this.parkLot);
+        }
+        else {
+          let alert = this.alertCtrl.create({
+            title: 'Ada Kesalahan !',
+            subTitle: 'Terjadi kesalahan saat mengambil data dari database !',
+            buttons: ['OK']
+          });
+          alert.present();
+        }
+      });
+    //tampilin mapsnya
+    // console.log('Loading Map dari Google MAP API');
     this.initMap();
   }
 
@@ -49,47 +63,46 @@ export class HomePage {
       center: { lat: -6.560556, lng: 106.726189 }
     });
 
-    this.temp1 = -6.564649;
-    this.temp2 = 106.730328;
-    this.temp3 = -6.559917;
-    this.temp4 = 106.725510;
+    //inisialisasi nilai awal untuk rute
+    this.temp1 = -6.560556;
+    this.temp2 = 106.726189;
+    this.temp3 = -6.560556;
+    this.temp4 = 106.726189;
+    this.place1 = "-6.560232, 106.724233";
+    this.place2 = "-6.560232, 106.724233";
+
+    //tampilin mapsnya
     this.directionsDisplay.setMap(this.map);
   }
 
   tampilRute() {
-    console.log("titik start :", this.place1);
-    console.log("titik end :", this.place2);
-    //place 1 coordinate convert
-    this.http.post(this.data.BASE_URL + "/convert.php?coordinate=" + this.place1, {})
-      .subscribe(data1 => {
-        let response1 = data1.json();
-        console.log(response1);
-        this.temp1 = response1.lat;
-        this.temp2 = response1.lng;
-      })
+    //unutk testing aja
+    // console.log("titik start :", this.place1);
+    // console.log("titik end :", this.place2);
 
-    //place 2 coordinate convert
-    this.http.post(this.data.BASE_URL + "/convert.php?coordinate=" + this.place2, {})
-      .subscribe(data2 => {
-        let response2 = data2.json();
-        console.log(response2);
-        this.temp3 = response2.lat;
-        this.temp4 = response2.lng;
-      })
+    //parsing dulu koordinatnya
+    this.pos = this.place1.indexOf(',');
+    this.temp1 = parseFloat(this.place1.substring(0, this.pos));
+    this.temp2 = parseFloat(this.place1.substring(this.pos + 1, this.place1.length));
+    this.temp3 = parseFloat(this.place2.substring(0, this.pos));
+    this.temp4 = parseFloat(this.place2.substring(this.pos + 1, this.place2.length));
 
-    console.log("Ini adalah temp1 ; ", this.temp1);
-    console.log("Ini adalah temp2 ; ", this.temp2);
-    console.log("Ini adalah temp3 ; ", this.temp3);
-    console.log("Ini adalah temp4 ; ", this.temp4);
+    //untuk testing aja
+    // console.log("Ini adalah temp1 ; ", this.temp1);
+    // console.log("Ini adalah temp2 ; ", this.temp2);
+    // console.log("Ini adalah temp3 ; ", this.temp3);
+    // console.log("Ini adalah temp4 ; ", this.temp4);
 
     //make start and end point of route
     this.start = new google.maps.LatLng(this.temp1, this.temp2);
     this.end = new google.maps.LatLng(this.temp3, this.temp4);
-    console.log(this.start);
-    console.log(this.end);
+    
+    //untuk testing aja
+    // console.log(this.start);
+    // console.log(this.end);
 
-      //do the route calculation
-      this.calculateAndDisplayRoute();
+    //do the route calculation
+    this.calculateAndDisplayRoute();
   }
 
   calculateAndDisplayRoute() {

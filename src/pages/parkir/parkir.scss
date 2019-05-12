@@ -1,6 +1,11 @@
 page-parkir {
-    ion-content{
+    ion-content {
         background-color: color($colors, primary);
-        
+        background-size: cover;
+        text-align: center;
+    }
+    #map {
+        height: 100%;
+        width: 100%;
     }
 }

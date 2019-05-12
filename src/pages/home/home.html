@@ -15,25 +15,21 @@
         </ion-content>
     </ion-menu>
     <h3>PETA IPB KITA</h3>
-    <div id="floating-panel">
+    <!-- <div id="floating-panel">
         <b>Start: </b>
-        <!-- (change)="calculateAndDisplayRoute()" -->
-        <select [(ngModel)]="place1" id="start">
-            <option value="(-6.564649, 106.730328)">Dramaga Tower</option>
-            <option value="chicago, il">Chicago</option>
+         (change)="calculateAndDisplayRoute()" -->
+    <!-- <select [(ngModel)]="place1" id="start">
+            <option value="{{ item.ParkLotCoor }}" *ngFor="let item of parkLot">{{ item.ParkLotName }}</option>
         </select><br>
         <b>End: </b>
         <select [(ngModel)]="place2" id="end">
-            <option value="(-6.559917, 106.725510)">Rektorat IPB</option>
-            <option value="chicago, il">Chicago</option>
+            <option value="{{ item2.ParkLotCoor }}" *ngFor="let item2 of parkLot">{{ item2.ParkLotName }}</option>
         </select>
         <br>
         <button ion-button (click)=tampilRute()>Tampilkan Rute</button>
-    </div>
+    </div> -->
     <div #map id="map"></div>
     <h3>INFO IPB</h3>
-    <p>Halo user dengan email {{ email }}</p>
-
     <ion-card>
         <ion-item>
             <ion-avatar item-start>
@@ -76,7 +72,6 @@
             <ion-avatar item-start>
                 <img src="assets/image/ipb.jpg">
             </ion-avatar>
-            <h2>InfoIPB</h2>
             <p>November 5, 1955</p>
         </ion-item>
 
@@ -105,6 +100,5 @@
                 </ion-note>
             </ion-col>
         </ion-row>
-
     </ion-card>
 </ion-content>
