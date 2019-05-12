@@ -66,4 +66,14 @@ export class Data {
   setDataParkLot(data: any) {
     this.storage.set('park_lot', data);
   }
+
+  getParkHistory() {
+    return this.storage.get('park_history').then((value) => {
+      return value;
+    });
+  }
+
+  setParkHistory(data: any) {
+    this.storage.set('park_history', data);
+  }
 }
