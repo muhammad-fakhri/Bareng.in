@@ -11,7 +11,7 @@ export class Data {
   */
   // public BASE_URL = 'http://barengin.atspace.cc';
 
-  public BASE_URL = 'http://localhost/barengin';
+  public BASE_URL = 'http://localhost/barengin-api';
   public HAS_LOGGED_IN = 'status_login';
 
   constructor(
