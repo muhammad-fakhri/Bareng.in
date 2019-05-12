@@ -9,9 +9,12 @@
 
 <ion-content padding class="guideme">
     <ion-fab right top>
-        <button ion-fab (click)="showRadio()">
+        <button ion-fab (click)=alertGuide()>
           <ion-icon name="pin" color="secondary" placeholder="GUIDE ME"></ion-icon>
         </button>
     </ion-fab>
     <div #map id="map"></div>
+    <div id="floating-panel" *ngIf="appear">
+        <button ion-button (click)=reduceAndSaveHistory()>Arrive at Park Lot</button>
+    </div>
 </ion-content>
