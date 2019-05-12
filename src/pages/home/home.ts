@@ -3,7 +3,6 @@ import { NavController, NavParams, AlertController } from 'ionic-angular';
 import { Http } from '@angular/http';
 import { Data } from '../../providers/datasource';
 // import { AngularFireAuth } from 'angularfire2/auth';
-
 declare var google;
 @Component({
   selector: 'page-home',
@@ -35,7 +34,7 @@ export class HomePage {
   ) { }
 
   ionViewDidLoad() {
-    //ambil data halte dari database
+    //ambil data tempat parkit dari database
     this.http.get(this.data.BASE_URL + "/get_parklot.php", {})
       .subscribe(dataParkLot => {
         let response = dataParkLot.json();

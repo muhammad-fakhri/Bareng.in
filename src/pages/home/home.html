@@ -15,33 +15,19 @@
         </ion-content>
     </ion-menu>
     <h3>PETA IPB KITA</h3>
-    <div id="floating-panel">
+    <!-- <div id="floating-panel">
         <b>Start: </b>
-        <!-- (change)="calculateAndDisplayRoute()" -->
-        <select [(ngModel)]="place1" id="start">
+         (change)="calculateAndDisplayRoute()" -->
+    <!-- <select [(ngModel)]="place1" id="start">
             <option value="{{ item.ParkLotCoor }}" *ngFor="let item of parkLot">{{ item.ParkLotName }}</option>
-            <!-- <option value="-6.559788, 106.730874">Graha Widya Wisuda</option>
-            <option value="-6.560232, 106.724233">Rektorat IPB</option>
-            <option value="-6.556247, 106.721957">Fakultas Peternakan</option>
-            <option value="-6.555701, 106.726104">Masjid Alhuriyyah</option>
-            <option value="-6.559051, 106.727673">FEM FATETA</option>
-            <option value="-6.555296, 106.729592">Teaching Lab (Khusus Motor)</option>
-            <option value="-6.557332, 106.732342">Gymnasium</option> -->
         </select><br>
         <b>End: </b>
         <select [(ngModel)]="place2" id="end">
             <option value="{{ item2.ParkLotCoor }}" *ngFor="let item2 of parkLot">{{ item2.ParkLotName }}</option>
-            <!-- <option value="-6.559788, 106.730874">Graha Widya Wisuda</option>
-            <option value="-6.560232, 106.724233">Rektorat IPB</option>
-            <option value="-6.556247, 106.721957">Fakultas Peternakan</option>
-            <option value="-6.555701, 106.726104">Masjid Alhuriyyah</option>
-            <option value="-6.559051, 106.727673">FEM FATETA</option>
-            <option value="-6.555296, 106.729592">Teaching Lab (Khusus Motor)</option>
-            <option value="-6.557332, 106.732342">Gymnasium</option> -->
         </select>
         <br>
         <button ion-button (click)=tampilRute()>Tampilkan Rute</button>
-    </div>
+    </div> -->
     <div #map id="map"></div>
     <h3>INFO IPB</h3>
     <ion-card>

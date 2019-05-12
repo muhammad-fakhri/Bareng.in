@@ -5,37 +5,28 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-  <ion-navbar>
-    <ion-title>Parking Location</ion-title>
-  </ion-navbar>
+    <ion-navbar>
+        <ion-title>Parking Location</ion-title>
+    </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-    <ion-card>
-        <img src="assets/image/map.jpg">
-    </ion-card>
-    <h4>LOKASI PARKIR TERDEKAT</h4>
+    <div #map id="map"></div>
+    <h4>PILIH TEMPAT PARKIR ANDA</h4>
     <ion-list>
         <ion-item>
-          <ion-label>Parkir 1</ion-label>
-          <ion-select [(ngModel)]="parkir1">
-            <ion-option value="gww">Parkir GWW</ion-option>
-            <ion-option value="gymnas">Parkir Gymnas</ion-option>
-            <ion-option value="astri">Parkir Astri</ion-option>
-          </ion-select>
+            <!-- <ion-label>Tempat Parkir Terdekat</ion-label> -->
+            <select [(ngModel)]="place" id="start">
+                <option value="{{ item.ParkLotCoor }}" *ngFor="let item of parkLot">{{ item.ParkLotName }}</option>
+            </select>
         </ion-item>
-        <ion-item>
-            <ion-label>Parkir 2</ion-label>
-            <ion-select [(ngModel)]="parkir2">
-              <ion-option value="menwa">Parkir Menwa</ion-option>
-              <ion-option value="alhur">Parkir Al-Hurriyah</ion-option>
-              <ion-option value="lsi">Parkir LSI</ion-option>
-            </ion-select>
-          </ion-item>
-      </ion-list>
-      <button ion-button icon-only>
+    </ion-list>
+    <button ion-button icon-only>
               <button ion-fab (click)="backtoHome()">
                 <ion-icon name="home" color="secondary"></ion-icon>
               </button>
-        </button>
+    </button>
+    <button ion-button (click)=tampilRute()>
+      Ayo Parkir
+    </button>
 </ion-content>
