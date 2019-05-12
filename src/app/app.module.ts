@@ -18,6 +18,7 @@ import { ParkirPage } from '../pages/parkir/parkir';
 import { ForgetPage } from '../pages/forget/forget';
 import { Data } from '../providers/datasource';
 import { IonicStorageModule } from '@ionic/storage';
+import { BustrackingPage } from '../pages/bustracking/bustracking';
 // import { AngularFireModule } from 'angularfire2';
 // import { AngularFireAuthModule } from 'angularfire2/auth';
 // import { AngularFireDatabaseModule } from 'angularfire2/database';
@@ -36,7 +37,8 @@ import { IonicStorageModule } from '@ionic/storage';
     AccountsettingsPage,
     LogoutPage,
     ForgetPage,
-    ParkirPage
+    ParkirPage,
+    BustrackingPage
   ],
   imports: [
     // AngularFireModule.initializeApp(firebaseConfig),
@@ -61,7 +63,8 @@ import { IonicStorageModule } from '@ionic/storage';
     AccountsettingsPage,
     LogoutPage,
     ForgetPage,
-    ParkirPage
+    ParkirPage,
+    BustrackingPage
   ],
   providers: [
     StatusBar,

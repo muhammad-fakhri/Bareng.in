@@ -5,8 +5,9 @@ ion-content{
     text-align: center;
 }
 img{
-    margin-top: 40px;
+    margin-top: 50px;
     width: 400px;
+    margin-bottom: 70px;
 }
 button{
     background-color: "dark";
@@ -14,15 +15,9 @@ button{
    box-shadow: 0 10px 30px 0 rgba(95,186,233,0.4);
    margin: 15px;
 }
- ion-title * {
-     margin-top: 10vh;
-     font-size: 30px;
-     width: 150%;
-     height: 150%;
-     margin-bottom: 5vh;
- }
+
  .login {
-    margin-top: 10px;
+    margin-top: 20px;
     text-align: center;
     border: none;
     padding: 15px 80px;
@@ -42,7 +37,7 @@ input[type=email], input[type=password] {
     padding: 15px 32px;
     text-decoration: none;
     font-size: 16px;
-    margin: 5px;
+    margin: 10px;
     width: 85%;
     border: 2px solid #f6f6f6;
     height: 35px;

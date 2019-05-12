@@ -9,6 +9,7 @@ import { HaltelocationPage } from '../pages/haltelocation/haltelocation';
 import { ParkinghistoryPage } from '../pages/parkinghistory/parkinghistory';
 import { AccountsettingsPage } from '../pages/accountsettings/accountsettings';
 import { OpeningPage } from '../pages/opening/opening';
+import { BustrackingPage } from '../pages/bustracking/bustracking';
 // import { LoginPage } from '../pages/login/login';
 // import { ParkirPage } from '../pages/parkir/parkir';
 
@@ -33,9 +34,10 @@ export class MyApp {
         {title: 'Home', component: HomePage},
         {title: 'Guide Me', component: GuidemePage},
         {title: 'Halte Location', component: HaltelocationPage},
+        {title: 'Bus Tracking', component: BustrackingPage},
         {title: 'Parking History', component: ParkinghistoryPage},
         {title: 'Account Settings', component: AccountsettingsPage},
-        {title: 'Logout', component: LogoutPage},
+        {title: 'Logout', component: LogoutPage}
       ];
   }
     
