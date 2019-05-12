@@ -3,6 +3,7 @@ import { NavController, NavParams, AlertController } from 'ionic-angular';
 // import { ParkirPage } from '../parkir/parkir';
 import { Data } from '../../providers/datasource';
 import { Http } from '@angular/http';
+import { HomePage } from '../home/home';
 declare var google;
 @Component({
   selector: 'page-guideme',
@@ -10,10 +11,11 @@ declare var google;
 })
 export class GuidemePage {
   @ViewChild('map') mapElement: ElementRef;
-  map:any;
+  map: any;
   gate: any;
-  frontGate: any; 
-  backGate: any; 
+  frontGate: any;
+  backGate: any;
+  id: any;
   place: any; //naruh inputan dari view untuk tempat kedua
   temp1: any; //nampung nilai Lat dari tempat pertama
   temp2: any; //nampung nilai Lng dari tempat pertama
@@ -25,13 +27,14 @@ export class GuidemePage {
   parkLot: string; //nampung data dari database
   directionsService = new google.maps.DirectionsService;
   directionsDisplay = new google.maps.DirectionsRenderer;
+  appear = false;
   constructor(
-    public navCtrl: NavController, 
-    public navParams: NavParams, 
+    public navCtrl: NavController,
+    public navParams: NavParams,
     public alertCtrl: AlertController,
     public data: Data,
     public http: Http
-    ) {}
+  ) { }
 
   ionViewDidLoad() {
     //ambil data tempat parkir dari database
@@ -70,9 +73,12 @@ export class GuidemePage {
     //tampilin mapsnya
     this.directionsDisplay.setMap(this.map);
     this.alertGuide();
-  } 
+  }
 
   async alertGuide() {
+    //hide the arrive button
+    this.appear = false;
+
     const alert = await this.alertCtrl.create({
       title: 'Where are you?',
       inputs: [
@@ -103,14 +109,14 @@ export class GuidemePage {
           handler: value => {
             this.gate = value;
             this.chooseAlert();
+          }
         }
-      }
       ]
     });
     await alert.present();
   }
 
-  async chooseAlert(){
+  async chooseAlert() {
     if (this.gate == "front") {
       const alert = await this.alertCtrl.create({
         title: 'Choose your parking lot',
@@ -146,12 +152,12 @@ export class GuidemePage {
             handler: value => {
               this.place = value;
               this.tampilRute();
+            }
           }
-        }
         ]
       });
       await alert.present();
-    } else if (this.gate == "back"){
+    } else if (this.gate == "back") {
       const alert = await this.alertCtrl.create({
         title: 'Choose your parking lot',
         inputs: [
@@ -177,22 +183,22 @@ export class GuidemePage {
         buttons: [
           {
             text: 'Lets Park !',
-            handler: value=> {
+            handler: value => {
               this.place = value
               this.tampilRute();
+            }
           }
-        }
         ]
       });
       await alert.present();
     } else {
-        const alert = await this.alertCtrl.create({
-          title: 'Error',
-          subTitle: 'There is an error',
-          message: 'Please try again.',
-          buttons: ['OK']
-        });
-        await alert.present();
+      const alert = await this.alertCtrl.create({
+        title: 'Error',
+        subTitle: 'There is an error',
+        message: 'Please try again.',
+        buttons: ['OK']
+      });
+      await alert.present();
     }
   }
 
@@ -201,7 +207,7 @@ export class GuidemePage {
     this.pos = this.place.indexOf(',');
     this.temp3 = parseFloat(this.place.substring(0, this.pos));
     this.temp4 = parseFloat(this.place.substring(this.pos + 1, this.place.length));
-    if(this.gate == "front"){
+    if (this.gate == "front") {
       this.temp1 = parseFloat(this.frontGate.substring(0, this.pos));
       this.temp2 = parseFloat(this.frontGate.substring(this.pos + 1, this.frontGate.length));
     } else if (this.gate == "back") {
@@ -213,6 +219,8 @@ export class GuidemePage {
     this.end = new google.maps.LatLng(this.temp3, this.temp4);
     //do the route calculation
     this.calculateAndDisplayRoute();
+    //make appeat the arrive button
+    this.appear = true;
   }
 
   calculateAndDisplayRoute() {
@@ -227,5 +235,59 @@ export class GuidemePage {
         window.alert('Directions request failed due to ' + status);
       }
     });
+  }
+
+  reduceAndSaveHistory() {
+    //prepare the park lot coordinate 
+    let coor1 = this.temp3.toString();
+    let coor2 = this.temp4.toString();
+    let coordinate = coor1 + ", " + coor2;
+    console.log(coordinate);
+
+    //reduce quota of parklot
+    this.http.post(this.data.BASE_URL + "/reduce_quota.php?coordinate=" + coordinate, {})
+      .subscribe(hug => {
+        let response = hug.json();
+        console.log(response);
+        if (response.status == "200") {
+          console.log(response.park_lot + " " + response.quota);
+        } else {
+          console.log("there is a problem");
+        }
+      });
+
+    //get the user data
+    this.data.getDataUser().then((nice) => {
+      this.id = nice.id;
+      console.log("user id: " + this.id);
+      //save history with park lot data and user id
+      this.http.post(this.data.BASE_URL + "/save_history.php?id=" + this.id + "&coordinate=" + coordinate, {})
+        .subscribe(data => {
+          let response = data.json();
+          console.log(response);
+        });
+    });
+
+    // halteAlert() {
+      let alert = this.alertCtrl.create({
+        title: 'Go To Halte',
+        message: 'Do you want go to halte?',
+        buttons: [
+          {
+            text: 'No',
+            handler: () => {
+              this.navCtrl.setRoot(HomePage);
+            }
+          },
+          {
+            text: 'Yes',
+            handler: () => {
+              console.log('Belum dibuat fungsinya pak');
+            }
+          }
+        ]
+      });
+      alert.present();
+    // }
   }
 }
