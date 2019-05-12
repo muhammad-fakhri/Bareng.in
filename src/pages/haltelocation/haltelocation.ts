@@ -1,25 +1,52 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, AlertController } from 'ionic-angular';
+import { Data } from '../../providers/datasource';
+import { Http } from '@angular/http';
 
-/**
- * Generated class for the HaltelocationPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-
-@IonicPage()
 @Component({
   selector: 'page-haltelocation',
   templateUrl: 'haltelocation.html',
 })
 export class HaltelocationPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-  }
+  halteId: number;
+  halte: string;
+  halte_info: string;
 
-  ionViewDidLoad() {
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    public data: Data,
+    public http: Http,
+    private alertCtrl: AlertController
+  ) {
     console.log('ionViewDidLoad HaltelocationPage');
+        // Query data halte dari API
+        this.http.get(this.data.BASE_URL + "/get_halte.php",{})
+        .subscribe(dataHalte => {
+          let response = dataHalte.json();
+          console.log(response);
+          if (response.status == "200") {
+  
+            //masukin data ke localstorage
+            this.data.setDataHalte(response.data);
+  
+            //ambil data dari local storage
+            this.data.getDataHalte().then(halteData => {
+              this.halte = halteData;
+            });
+          }
+          else {
+            let alert = this.alertCtrl.create({
+              title: 'Ada Kesalahan!',
+              subTitle: 'Terjadi kesalahan saat mengambil data dari database !',
+              buttons: ['OK']
+            });
+            alert.present();
+          }
+        });
+  
   }
 
+  ionViewDidLoad() {}
 }

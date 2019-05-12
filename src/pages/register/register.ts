@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { HomePage } from '../home/home';
-import { AngularFireAuth } from 'angularfire2/auth';
+import { NavController, NavParams } from 'ionic-angular';
 import { LoginPage } from '../login/login';
 import { Http } from '@angular/http';
 import { Data } from '../../providers/datasource';
 import { AlertController } from 'ionic-angular';
-
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+// import { AngularFireAuth } from 'angularfire2/auth';
+ 
 @Component({
   selector: 'page-register',
   templateUrl: 'register.html',
@@ -17,19 +17,40 @@ export class RegisterPage {
   email: string;
   password: string;
   repassword: string;
+  registerForm: FormGroup;
 
   constructor(
-    public navCtrl: NavController, 
+    // private fire: AngularFireAuth,
+    public navCtrl: NavController,
     public navParams: NavParams,
-    private fire: AngularFireAuth,
     public http: Http,
-    public alertCtrl: AlertController, 
-    public data: Data
-    ) {
+    public alertCtrl: AlertController,
+    public data: Data,
+    private formBuilder: FormBuilder
+  ) {
+    this.registerForm = this.formBuilder.group({
+       name:['', Validators.compose([
+         Validators.required
+         ])],
+       email:['', Validators.compose([
+         Validators.required,
+         Validators.email
+         ])],
+       password:['', Validators.compose([
+         Validators.required
+         ])],
+       repassword:['', Validators.compose([
+         Validators.required
+         ])]
+    });
   }
-  
+
   ionViewDidLoad() {
     console.log('ionViewDidLoad RegisterPage');
+  }
+
+  ionViewDidEnter() {
+    
   }
 
   // register(){
@@ -43,61 +64,52 @@ export class RegisterPage {
   //     return console.log('Dapet error ', error);
   //   });
   // }
-  register(){
-      let input = JSON.stringify({
-        name:      this.name,
-        email:       this.email,
-        password:    this.password,
-        repassword:  this.repassword
-      });
+  register() {
+    if (this.registerForm.valid) {
+    let input = JSON.stringify({
+      name: this.registerForm.controls['name'].value,
+      email: this.registerForm.controls['email'].value,
+      password: this.registerForm.controls['password'].value,
+      repassword: this.registerForm.controls['repassword'].value
+    });
 
-      //test inputnya
-      console.log(input);
+    //log hasil inputnya (ini cuma buat testing)
+    console.log(input);
 
-      if(true){
-        this.http.post(this.data.BASE_URL+"/register.php",input)
-        .subscribe(data => {
+    //masukin data ke database
+    this.http.post(this.data.BASE_URL + "/register.php", input)
+      .subscribe(data => {
         let response = data.json();
-        console.log(response);
-    if(response.status=="200"){
-          let alert = this.alertCtrl.create({
-                title: 'Selamat !',
-                subTitle: 'Akun kamu berhasil terdaftar',      
-                buttons: ['OK']
-              });
-              alert.present();
-        this.navCtrl.push(LoginPage);
-      }
-      else if(response.status=="409"){
-             let alert = this.alertCtrl.create({
-                title: 'Email sudah terdaftar',
-                subTitle: 'Silahkan pilih email lain.',      
-                buttons: ['OK']
-              });
-              alert.present();
-      }
-      else
-           {
-             let alert = this.alertCtrl.create({
-                title: 'Gagal Membuat Akun',
-                subTitle: 'Periksa kembali data.',      
-                buttons: ['OK']
-              });
-              alert.present();
-           }
 
-      });
+        // log responsenya (ini cuma buat testing)
+        console.log(response);
+
+        if (response.status == "200") {
+          let alert = this.alertCtrl.create({
+            title: 'Selamat !',
+            subTitle: 'Akun kamu berhasil terdaftar',
+            buttons: ['OK']
+          });
+          alert.present();
+          this.navCtrl.push(LoginPage);
+        }
+        else if (response.status == "409") {
+          let alert = this.alertCtrl.create({
+            title: 'Email sudah terdaftar',
+            subTitle: 'Silahkan pilih email lain.',
+            buttons: ['OK']
+          });
+          alert.present();
+        }
+        else {
+          let alert = this.alertCtrl.create({
+            title: 'Password tidak sama',
+            subTitle: 'Mohon periksa kembali password dan konfirmasi password anda',
+            buttons: ['OK']
+          });
+          alert.present();
+        }
+    });
     }
-    // else {
-    //     // loading.dismiss();
-    //     // this.vibration.vibrate(1000);
-    //     let alert = this.alertCtrl.create({
-    //             title: 'Gagal Membuat Akun',
-    //             subTitle: 'Periksa kembali data.',      
-    //             buttons: ['OK']
-    //           });
-    //           alert.present();
-    //     // this.submitted2 = false;
-    //   }
   }
 }

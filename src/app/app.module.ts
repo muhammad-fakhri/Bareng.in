@@ -3,11 +3,7 @@ import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
-import { HttpModule, JsonpModule } from '@angular/http';
-import { AngularFireModule } from 'angularfire2';
-import { AngularFireAuthModule } from 'angularfire2/auth';
-import { AngularFireDatabaseModule } from 'angularfire2/database';
-  
+import { HttpModule, JsonpModule } from '@angular/http';  
 import { MyApp } from './app.component';
 import { LoginPage } from '../pages/login/login';
 import { RegisterPage } from '../pages/register/register';
@@ -18,12 +14,14 @@ import { HaltelocationPage } from '../pages/haltelocation/haltelocation';
 import { ParkinghistoryPage } from '../pages/parkinghistory/parkinghistory';
 import { AccountsettingsPage } from '../pages/accountsettings/accountsettings';
 import { OpeningPage } from '../pages/opening/opening';
-import { ForgetPage } from '../pages/forget/forget';
-import { firebaseConfig } from './firebaseconfig';
-import { Data } from '../providers/datasource';
-// import { Storage } from '@ionic/storage';
-import { IonicStorageModule } from '@ionic/storage';
 import { ParkirPage } from '../pages/parkir/parkir';
+import { ForgetPage } from '../pages/forget/forget';
+import { Data } from '../providers/datasource';
+import { IonicStorageModule } from '@ionic/storage';
+// import { AngularFireModule } from 'angularfire2';
+// import { AngularFireAuthModule } from 'angularfire2/auth';
+// import { AngularFireDatabaseModule } from 'angularfire2/database';
+// import { firebaseConfig } from './firebaseconfig';
 
 @NgModule({
   declarations: [
@@ -41,13 +39,13 @@ import { ParkirPage } from '../pages/parkir/parkir';
     ParkirPage
   ],
   imports: [
+    // AngularFireModule.initializeApp(firebaseConfig),
+    // AngularFireAuthModule,
+    // AngularFireDatabaseModule,
     BrowserModule,
     HttpModule,
     JsonpModule,
     IonicModule.forRoot(MyApp),
-    AngularFireModule.initializeApp(firebaseConfig),
-    AngularFireAuthModule,
-    AngularFireDatabaseModule,
     IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],

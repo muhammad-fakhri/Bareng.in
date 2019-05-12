@@ -1,13 +1,12 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-import { HomePage } from '../home/home';
 import { AlertController } from 'ionic-angular';
-import { AngularFireAuth } from 'angularfire2/auth';
-// import { Profile } from '../../models/profile/profile.interface';
+import { Data } from '../../providers/datasource';
+import { Http } from '@angular/http';
+import { LoginPage } from '../login/login';
+// import { AngularFireAuth } from 'angularfire2/auth';
 // import { AngularFireDatabase } from 'angularfire2/database'
 // import { Observable } from 'rxjs';
-import { Data } from '../../providers/datasource';
-import { Http } from '@angular/http'; 
 
 @Component({
   selector: 'page-accountsettings',
@@ -19,27 +18,23 @@ export class AccountsettingsPage {
   id: number;
   name: string;
   email: string;
-  // password: string;
   license_plate: string;
   address: string;
   phone_number: number;
 
   constructor(
-    public navCtrl: NavController, 
+    public navCtrl: NavController,
     public navParams: NavParams,
-    private fire: AngularFireAuth,
     public http: Http,
     public data: Data,
     public alertCtrl: AlertController
-    ) {}
+  ) { }
 
-  ionViewWillEnter(){
+  ionViewDidEnter() {
     this.data.getDataUser().then((user) => {
-      // console.log("Ini adalah datanya " + user)
       this.id = user.id;
       this.name = user.name;
       this.email = user.email;
-      // this.password = user.password;
       this.license_plate = user.license_plate;
       this.address = user.address;
       this.phone_number = user.phone_number;
@@ -49,37 +44,80 @@ export class AccountsettingsPage {
   updateData() {
     //simpan update ke database
     let input = JSON.stringify({
-        id: this.id,
-        name:    this.name,
-        email:    this.email,
-        // password:    this.password,
-        license_plate:    this.license_plate,
-        address:    this.address,
-        phone_number:    this.phone_number
-      });
+      id: this.id,
+      name: this.name, 
+      email: this.email,
+      license_plate: this.license_plate,
+      address: this.address,
+      phone_number: this.phone_number
+    });
     console.log(input);
-    this.http.post(this.data.BASE_URL+"/edit_profile.php", input)
-    .subscribe(data => {
-      let response = data.json();
-      console.log(response);
+    this.http.post(this.data.BASE_URL + "/edit_profile.php", input)
+      .subscribe(data => {
+        let response = data.json();
+        console.log(response);
 
-      if(true){
+        if (response.status == "200") {
+          //update data user di local
+          this.data.setDataUser(response.data);
           let alert = this.alertCtrl.create({
-          title: 'Profil Berhasil Diubah !',
-          subTitle: '',
-          buttons: ['OK']
+            title: 'Profil Berhasil Diubah !',
+            subTitle: '',
+            buttons: ['OK']
           });
           alert.present();
-      }
-      else
-           {
-             let alert = this.alertCtrl.create({
-                title: 'Gagal Mengubah Profil',
-                subTitle: '',      
-                buttons: ['OK']
-              });
-              alert.present();
-           }
+        }
+        else {
+          let alert = this.alertCtrl.create({
+            title: 'Gagal Mengubah Profil',
+            subTitle: '',
+            buttons: ['OK']
+          });
+          alert.present();
+        }
       });
-    };
   }
+
+  deleteAccount(){
+    // let id = this.id;
+    this.http.post(this.data.BASE_URL+"/delete_user.php?id="+this.id,{})
+      .subscribe(data => {
+        let response = data.json();
+        console.log(response);
+        if (response.status == "200") {
+          this.data.logout();
+          let alert = this.alertCtrl.create({
+            title: 'Sampai Jumpa !',
+            subTitle: 'Akun anda berhasil dihapus',
+            buttons: ['OK']
+          });
+          alert.present();
+          this.navCtrl.setRoot(LoginPage);
+        }
+      })
+  }
+
+  showConfirm() {
+    const confirm = this.alertCtrl.create({
+      title: 'Delete Account',
+      message: 'Are you sure that you want to delete your account permanently?',
+      buttons: [
+        {
+          text: 'Cancel',
+          handler: () => {
+            console.log('Disagree clicked');
+            // this.confirm.dismiss();
+          }
+        },
+        {
+          text: 'Yes',
+          handler: () => {
+            console.log('Agree clicked');
+            this.deleteAccount();
+          }
+        }
+      ]
+    });
+    confirm.present();
+  }
+}

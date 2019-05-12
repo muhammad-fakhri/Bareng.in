@@ -1,7 +1,7 @@
 page-forget {
     ion-content{
         margin-top: 15px;
-        background-color: "primary";
+        background-color: color($colors, primary);;
         background-size: cover;
         text-align: center;
     }
@@ -15,6 +15,7 @@ page-forget {
        margin: 15px;
     }
      .forgot {
+        background-color:color($colors, primary);
         margin-top: 10px;
         text-align: center;
         border: none;

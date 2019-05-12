@@ -1,7 +1,11 @@
 page-guideme {
-    ion-content{
-        background-color: "primary";
+    ion-content {
+        background-color: color($colors, primary);
         background-size: cover;
         text-align: center;
+    }
+    #map {
+        height: 100%;
+        width: 100%;
     }
 }

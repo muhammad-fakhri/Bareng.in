@@ -1,6 +1,6 @@
 page-register {
     ion-content{
-        background-color: "primary";
+        background-color: color($colors, primary);
         background-size: cover;
         text-align: center;
     }
@@ -14,6 +14,7 @@ page-register {
        margin: 15px;
     }
      .register {
+        background-color:color($colors, primary);
         margin-top: 10px;
         text-align: center;
         border: none;
@@ -25,13 +26,13 @@ page-register {
         transition: all 0.3s ease-in-out;
         width: 85%;
         height: 35px;
-        color: #ffffff;
+        color: "secondary";
         }
-        input[type=text], input[type=email], input[type=password] {
+    input[type=text], input[type=email], input[type=password] {
         background-color: #f6f6f6;
         border: none;
         color: #535353;
-        padding: 15px 32px;
+        
         text-decoration: none;
         font-size: 16px;
         margin: 5px;
