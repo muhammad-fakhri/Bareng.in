@@ -6,7 +6,7 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class Servers {
 
-  constructor(public http: Http,public datasource: DataSource) {}
+  constructor(public http: Http,public datasource: Data) {}
 
   getData(){
 
