@@ -12,6 +12,7 @@ export class HaltelocationPage {
   halteId: number;
   halte: string;
   halte_info: string;
+  halte_location: string;
 
   constructor(
     public navCtrl: NavController,
@@ -38,8 +39,8 @@ export class HaltelocationPage {
           }
           else {
             let alert = this.alertCtrl.create({
-              title: 'Ada Kesalahan!',
-              subTitle: 'Terjadi kesalahan saat mengambil data dari database !',
+              title: 'There is problem!',
+              subTitle: 'Please try again or check your internet connection!',
               buttons: ['OK']
             });
             alert.present();

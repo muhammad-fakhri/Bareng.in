@@ -71,8 +71,8 @@ export class LoginPage {
         //masukin data ke localstorage
         this.data.login(response.data);
         let alert = this.alertCtrl.create({
-          title: 'Selamat Datang',
-          subTitle: 'Kamu Berhasil Login',
+          title: 'Welcome',
+          subTitle: 'Success to login',
           buttons: ['OK']
         });
         alert.present();
@@ -80,23 +80,23 @@ export class LoginPage {
       }
       else if (response.status == "404") {
         let alert = this.alertCtrl.create({
-          title: 'Gagal Masuk',
-          subTitle: 'Tidak ada akun dengan email ini',
+          title: 'Failed to login',
+          subTitle: 'This email has not been registered',
           buttons: ['OK']
         });
         alert.present();
       } else if(response.status == "406") {
         let alert = this.alertCtrl.create({
-          title: 'Gagal Masuk',
-          subTitle: 'Password salah !',
+          title: 'Failed to login',
+          subTitle: 'Wrong Password !',
           buttons: ['OK']
         });
         alert.present();
       }
       else {
         let alert = this.alertCtrl.create({
-          title: 'Gagal Masuk',
-          subTitle: 'Ada kesalahan, mohon coba lagi sebentar lagi !',
+          title: 'Failed to login',
+          subTitle: 'Please try again or check your internet connection!',
           buttons: ['OK']
         });
         alert.present();
