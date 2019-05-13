@@ -31,10 +31,17 @@ export class ParkinghistoryPage {
             //masukin data ke localstorage
             this.data.setParkHistory(response.data);
           }
-          else {
+          else if(response.status == "404") {
             let alert = this.alertCtrl.create({
-              title: 'Ada Kesalahan!',
-              subTitle: 'Terjadi kesalahan saat mengambil data dari database !',
+              title: 'No Park History!',
+              subTitle: "You doesn't have parking history!",
+              buttons: ['OK']
+            });
+            alert.present();
+          } else {
+            let alert = this.alertCtrl.create({
+              title: 'There is error!',
+              subTitle: "Please try again or check your internet connection!",
               buttons: ['OK']
             });
             alert.present();

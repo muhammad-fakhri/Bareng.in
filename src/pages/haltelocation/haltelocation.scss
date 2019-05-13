@@ -1,7 +1,11 @@
 page-haltelocation {
-    ion-content{
+    ion-content {
         background-color: color($colors, primary);
         background-size: cover;
         text-align: center;
+    }
+    #map {
+        height: 80%;
+        width: 100%;
     }
 }

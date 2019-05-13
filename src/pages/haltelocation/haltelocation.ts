@@ -1,19 +1,20 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild, ElementRef } from '@angular/core';
 import { NavController, NavParams, AlertController } from 'ionic-angular';
 import { Data } from '../../providers/datasource';
 import { Http } from '@angular/http';
-
+declare var google;
 @Component({
   selector: 'page-haltelocation',
   templateUrl: 'haltelocation.html',
 })
 export class HaltelocationPage {
-
+  @ViewChild('map') mapElement: ElementRef;
   halteId: number;
   halte: string;
   halte_info: string;
-  halte_location: string;
-
+ map: any;
+ directionsService = new google.maps.DirectionsService;
+ directionsDisplay = new google.maps.DirectionsRenderer;
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
@@ -49,5 +50,16 @@ export class HaltelocationPage {
   
   }
 
-  ionViewDidLoad() {}
+  ionViewDidLoad() {
+    // this.initMap();
+  }
+
+  initMap() {
+    this.map = new google.maps.Map(this.mapElement.nativeElement, {
+      zoom: 17,
+      center: { lat: -6.560556, lng: 106.726189 }
+    });
+    //tampilin mapsnya
+    this.directionsDisplay.setMap(this.map);
+  }
 }
