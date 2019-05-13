@@ -29,6 +29,9 @@ export class Data {
   logout() {
     this.storage.remove(this.HAS_LOGGED_IN);
     this.storage.remove('user_data');
+    this.storage.remove('halte_lot');
+    this.storage.remove('park_lot');
+    this.storage.remove('park_history');
   };
 
   isLogin() {

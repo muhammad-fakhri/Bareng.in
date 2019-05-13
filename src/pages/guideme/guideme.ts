@@ -4,6 +4,7 @@ import { NavController, NavParams, AlertController } from 'ionic-angular';
 import { Data } from '../../providers/datasource';
 import { Http } from '@angular/http';
 import { HomePage } from '../home/home';
+import { HaltelocationPage } from '../haltelocation/haltelocation';
 declare var google;
 @Component({
   selector: 'page-guideme',
@@ -302,7 +303,8 @@ export class GuidemePage {
         {
           text: 'Yes',
           handler: () => {
-            console.log('Belum dibuat fungsinya pak');
+            // console.log('Belum dibuat fungsinya pak');
+            this.navCtrl.push(HaltelocationPage);
           }
         }
       ]
