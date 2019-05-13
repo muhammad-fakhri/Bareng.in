@@ -39,7 +39,7 @@ export class LoginPage {
       ])]
     });
   }
-
+  
   ionViewDidLoad() {
     console.log("Let's login !");
   }

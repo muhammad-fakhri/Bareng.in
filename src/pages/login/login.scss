@@ -20,7 +20,7 @@ button{
     margin-top: 20px;
     text-align: center;
     border: none;
-    padding: 15px 80px;
+    padding: 15px 32px;
     text-decoration: none;
     display: inline-block;
     text-transform: uppercase;
@@ -37,7 +37,11 @@ input[type=email], input[type=password] {
     padding: 15px 32px;
     text-decoration: none;
     font-size: 16px;
+<<<<<<< HEAD
     margin: 10px;
+=======
+    margin: 5px;
+>>>>>>> e0d79df21e4c289f951d788ab24f4980a67a8f5e
     width: 100%;
     border: 2px solid #f6f6f6;
     height: 35px;
@@ -45,4 +49,5 @@ input[type=email], input[type=password] {
     margin: 0 auto;
     margin-bottom: 10px;
     }
+    
 }

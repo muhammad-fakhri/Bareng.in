@@ -5,20 +5,20 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-  <ion-navbar>
-      <button ion-button menuToggle>
+    <ion-navbar>
+        <button ion-button menuToggle>
           <ion-icon name="menu"></ion-icon>
         </button>
-    <ion-title>Parking History</ion-title>
-  </ion-navbar>
+        <ion-title>Parking History</ion-title>
+    </ion-navbar>
 </ion-header>
 
 <ion-content padding class="parkinghistory">
     <ion-list>
-        <ion-item>
-          <ion-datetime displayFormat="h:mm A"></ion-datetime>
-          <p>Lokasi Parkir:</p>
-          <p>Lamar Parkir:</p>
+        <ion-item *ngFor="let item of history">
+            <h5>Lokasi Parkir: {{ item.ParkLotName }}</h5>
+            <p>Tanggal Parkir: {{ item.history_date }}</p>
+            <p>Waktu Parkir: {{ item.history_time }}</p>
         </ion-item>
-      </ion-list>
+    </ion-list>
 </ion-content>

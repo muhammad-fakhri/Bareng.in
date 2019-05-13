@@ -266,28 +266,48 @@ export class GuidemePage {
           let response = data.json();
           console.log(response);
         });
+
+      // //update local storage of park history
+      // this.http.get(this.data.BASE_URL + "/park_history.php?id=" + this.id)
+      //   .subscribe(dataHistory => {
+      //     let response = dataHistory.json();
+      //     console.log(response);
+      //     console.log("hihi " + this.id)
+      //     if (response.status == "200") {
+      //       //masukin data ke localstorage
+      //       this.data.setParkHistory(response.data);
+      //     }
+      //     else {
+      //       let alert = this.alertCtrl.create({
+      //         title: 'Ada Kesalahan!',
+      //         subTitle: 'Terjadi kesalahan saat mengambil data dari database !',
+      //         buttons: ['OK']
+      //       });
+      //       alert.present();
+      //     }
+      //   });
     });
 
     // halteAlert() {
-      let alert = this.alertCtrl.create({
-        title: 'Go To Halte',
-        message: 'Do you want go to halte?',
-        buttons: [
-          {
-            text: 'No',
-            handler: () => {
-              this.navCtrl.setRoot(HomePage);
-            }
-          },
-          {
-            text: 'Yes',
-            handler: () => {
-              console.log('Belum dibuat fungsinya pak');
-            }
+    let alert = this.alertCtrl.create({
+      title: 'Go To Halte',
+      message: 'Do you want go to halte?',
+      buttons: [
+        {
+          text: 'No',
+          handler: () => {
+            this.navCtrl.setRoot(HomePage);
           }
-        ]
-      });
-      alert.present();
+        },
+        {
+          text: 'Yes',
+          handler: () => {
+            console.log('Belum dibuat fungsinya pak');
+          }
+        }
+      ]
+    });
+    alert.present();
     // }
   }
 }
