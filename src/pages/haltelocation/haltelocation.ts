@@ -51,7 +51,7 @@ export class HaltelocationPage {
   }
 
   ionViewDidLoad() {
-    this.initMap();
+    // this.initMap();
   }
 
   initMap() {
