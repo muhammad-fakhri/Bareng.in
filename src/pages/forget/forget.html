@@ -8,10 +8,10 @@
 <ion-content padding>
   
   <ion-list>
-      <ion-input placeholder="Email" type="email"></ion-input>
+      <ion-input placeholder="Email" type="email" [(ngModel)]="email"></ion-input>
   </ion-list>
 
-  <button ion-button full (click)="forget()" class=".forgot">Send Email</button>
+  <button ion-button (click)="forget()" class=".forgot">Send Email</button>
 
   <p>Enter your email address and we will send you a link to restore your Password</p>
 </ion-content>

@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { LoginPage } from '../login/login';
 import { AlertController } from 'ionic-angular';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+
 
 @Component({
   selector: 'page-forget',
@@ -9,13 +11,22 @@ import { AlertController } from 'ionic-angular';
 })
 export class ForgetPage {
 
-  email: string;
+  email: any;
+  forgetForm: FormGroup;
+  
 
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-    public alertCtrl: AlertController
+    public alertCtrl: AlertController,
+    private formBuilder: FormBuilder
   ) {
+    this.forgetForm = this.formBuilder.group({
+      email:['', Validators.compose([
+        Validators.required,
+        Validators.email
+        ])]
+    })
   }
 
   ionViewDidLoad() {
@@ -23,6 +34,7 @@ export class ForgetPage {
   }
 
   forget() {
+    this.email = "bego";
     if (this.email.length == 0) {
       const alert = this.alertCtrl.create({
         subTitle: 'Please tell us your email',
