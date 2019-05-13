@@ -9,9 +9,9 @@ export class Data {
     uncommand synxtax dibawah ini 
     jika ingin pakai API yang sudah di deploy
   */
-  // public BASE_URL = 'http://barengin.atspace.cc';
+  public BASE_URL = 'http://barengin.atspace.cc';
 
-  public BASE_URL = 'http://localhost/barengin-api';
+  // public BASE_URL = 'http://localhost/barengin-api';
   public HAS_LOGGED_IN = 'status_login';
 
   constructor(
@@ -67,13 +67,13 @@ export class Data {
     this.storage.set('park_lot', data);
   }
 
-  getDataHistory() {
+  getParkHistory() {
     return this.storage.get('park_history').then((value) => {
       return value;
     });
   }
 
-  setDataHistory(data: any) {
+  setParkHistory(data: any) {
     this.storage.set('park_history', data);
   }
 }
