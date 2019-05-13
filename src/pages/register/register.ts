@@ -52,18 +52,6 @@ export class RegisterPage {
   ionViewDidEnter() {
     
   }
-
-  // register(){
-  //   this.fire.auth.createUserWithEmailAndPassword(this.email, this.password)
-  //   .then(data => {
-  //     // console.log('dapet datanya yeay !', data);
-  //     console.log('bakal register orang pake ', this.email, this.password);
-  //     this.navCtrl.setRoot(LoginPage);
-  //   })
-  //   .catch(error => {
-  //     return console.log('Dapet error ', error);
-  //   });
-  // }
   register() {
     if (this.registerForm.valid) {
     let input = JSON.stringify({
