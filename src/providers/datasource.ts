@@ -9,9 +9,9 @@ export class Data {
     uncommand synxtax dibawah ini 
     jika ingin pakai API yang sudah di deploy
   */
-  public BASE_URL = 'http://barengin.atspace.cc';
+  // public BASE_URL = 'http://barengin.atspace.cc';
 
-  // public BASE_URL = 'http://localhost/barengin-api';
+  public BASE_URL = 'http://localhost/barengin-api';
   public HAS_LOGGED_IN = 'status_login';
 
   constructor(
