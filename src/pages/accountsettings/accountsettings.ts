@@ -61,7 +61,7 @@ export class AccountsettingsPage {
           //update data user di local
           this.data.setDataUser(response.data);
           let alert = this.alertCtrl.create({
-            title: 'Profil Berhasil Diubah !',
+            title: 'Your profile has changed!',
             subTitle: '',
             buttons: ['OK']
           });
@@ -69,7 +69,7 @@ export class AccountsettingsPage {
         }
         else {
           let alert = this.alertCtrl.create({
-            title: 'Gagal Mengubah Profil',
+            title: 'Failed to change profile!',
             subTitle: '',
             buttons: ['OK']
           });
@@ -87,8 +87,8 @@ export class AccountsettingsPage {
         if (response.status == "200") {
           this.data.logout();
           let alert = this.alertCtrl.create({
-            title: 'Sampai Jumpa !',
-            subTitle: 'Akun anda berhasil dihapus',
+            title: 'Good bye!',
+            subTitle: 'Success to delete you account!',
             buttons: ['OK']
           });
           alert.present();

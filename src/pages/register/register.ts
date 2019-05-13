@@ -74,8 +74,8 @@ export class RegisterPage {
 
         if (response.status == "200") {
           let alert = this.alertCtrl.create({
-            title: 'Selamat !',
-            subTitle: 'Akun kamu berhasil terdaftar',
+            title: 'Congrats!',
+            subTitle: 'Your account has been registered',
             buttons: ['OK']
           });
           alert.present();
@@ -83,16 +83,16 @@ export class RegisterPage {
         }
         else if (response.status == "409") {
           let alert = this.alertCtrl.create({
-            title: 'Email sudah terdaftar',
-            subTitle: 'Silahkan pilih email lain.',
+            title: 'This email has been used before',
+            subTitle: 'Please use another email.',
             buttons: ['OK']
           });
           alert.present();
         }
         else {
           let alert = this.alertCtrl.create({
-            title: 'Password tidak sama',
-            subTitle: 'Mohon periksa kembali password dan konfirmasi password anda',
+            title: 'Password did not match',
+            subTitle: 'Please check your password or your confirm password',
             buttons: ['OK']
           });
           alert.present();
