@@ -43,19 +43,6 @@ export class LoginPage {
   ionViewDidLoad() {
     console.log("Let's login !");
   }
-  // login() {
-  //   this.fire.auth.signInWithEmailAndPassword(this.email, this.password)
-  //   .then( data => {
-  //     console.log('datanya nih ! ', data);
-  //     console.log('Akunnya ada, user bakal di log in !');
-  //     this.alert('Selamat, kamu berhasil login !');
-  //     this.navCtrl.setRoot(HomePage);
-  //   })
-  //   .catch(error => {
-  //     console.log('Ada error nih !', error);
-  //     this.alert(error.message);
-  //   })
-  // }
 
   login() {
     let input = JSON.stringify({

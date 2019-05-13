@@ -39,14 +39,9 @@
     <div *ngIf="!registerForm.controls.repassword.valid && registerForm.controls.repassword.dirty">
       Please enter a matching password
     </div>
-    <button ion-button full type="submit" color="secondary" class="register" [disabled]="!registerForm.valid">Sign up</button>
+    <button ion-button full type="submit" color="secondary" class="register" [disabled]="!registerForm.valid" size="small">Sign up</button>
   </form>
-  <!--   <ion-list>
-    <ion-input placeholder="Name" [(ngModel)]="name" type="text"></ion-input>
-    <ion-input placeholder="Email" [(ngModel)]="email" type="email"></ion-input>
-    <ion-input placeholder="Password" [(ngModel)]="password" type="password"></ion-input>
-    <ion-input placeholder="Confirm" [(ngModel)]="repassword" type="password"></ion-input>
-  </ion-list> -->
+  
   <footer>
     <img src="assets/image/logo.png" alt="logo">
   </footer>
