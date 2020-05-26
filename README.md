@@ -7,6 +7,8 @@ Bareng.in is a mobile-based application that provides a feature to search for pa
 ## Development Tools
 1. Ionic
 2. MySQL
+3. Sublime Text Editor
+4. Google Map API
 
 ## Development Team
 1. Friska Meilani  (Front-end)
