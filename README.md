@@ -1,14 +1,14 @@
 # Bareng.in
-Projek Mata Kuliah RPL Program Studi Ilmu Komputer IPB
+Final project of Rekayasa Perangkat Lunak Course from Computer Science Dept. IPB University
 
-## Deskripsi
-Bareng.in adalah sebuah aplikasi berbasis mobile yang menyediakan fitur untuk mencari lahan parkir dengan kuota yang masih tersedia di lingkungan IPB dan juga menyediakan informasi halte bus terdekat dengan lokasi lahan parkir yang dikunjungi.
+## Description
+Bareng.in is a mobile-based application that provides a feature to search for parking lots with quotas that are still available in the IPB University Dramaga Campus region and also provides information on the nearest bus stop to the location of the visited parking lot.
 
-## Teknologi
+## Development Tools
 1. Ionic
 2. MySQL
 
-## Kelompok
+## Development Team
 1. Friska Meilani  (Front-end)
 2. Yasmin Lukman   (Front-end)
 3. Muhammad Fakhri (Back-end)
