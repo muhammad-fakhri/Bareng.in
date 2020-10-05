@@ -1,6 +1,8 @@
 {
   "name": "Bareng.in",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "ionic-angular",
   "id": "ab5a636a"
 }
